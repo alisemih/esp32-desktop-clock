@@ -1,0 +1,171 @@
+<!--
+  03 · HAVA DURUMU · SAATLİK — mevcut durum + saat saat tahmin.
+
+  Saatlik kartlar tasarimda ekran kenarindan tasar; burada bu gercek bir yatay
+  kaydirmaya donusur: lv_obj flex satiri icerigi ekrandan genis oldugu icin
+  LVGL onu kendiliginden kaydirilabilir yapar.
+
+  Gecisler:
+    ust bar etiketi -> home_main      (move_right  / saga kaydirma)
+    sayfa noktalari -> wifi_list      (move_left   / sola kaydirma)
+    alt ipucu       -> weather_daily  (move_top    / asagi kaydirma)
+-->
+<component>
+	<view
+		extends="lv_obj"
+		width="800"
+		height="480"
+		flex_flow="column"
+		style_flex_main_place="space_between"
+		style_pad_top="34"
+		style_pad_bottom="28"
+		style_pad_left="44"
+		style_pad_right="44"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj
+				name="back_home"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="7"
+					height="7"
+					style_radius="4"
+					style_bg_color="#accent_cool"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="HAVA DURUMU · İSTANBUL"
+					style_text_font="mono_15"
+					style_text_color="#text_2"
+					style_text_letter_space="3"
+				/>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- su anki durum -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="18"
+			>
+				<style name="plain" />
+				<lv_image src="wx_partly_104" />
+				<lv_label
+					name="temp"
+					bind_text="out_temp"
+					style_text_font="disp_112"
+					style_text_color="#text_1"
+					style_text_letter_space="-3"
+				/>
+			</lv_obj>
+
+			<lv_obj width="content" height="content" flex_flow="column" style_flex_cross_place="end" style_pad_row="8">
+				<style name="plain" />
+				<lv_label name="cond" bind_text="out_cond" style_text_font="mono_19" style_text_color="#text_1" />
+				<lv_label name="feels" bind_text="out_feels" style_text_font="mono_15" style_text_color="#text_2" />
+				<lv_obj width="content" height="content" flex_flow="row" style_pad_column="16">
+					<style name="plain" />
+					<lv_label text="↑ 27°" style_text_font="mono_15" style_text_color="#accent_warm" />
+					<lv_label text="↓ 19°" style_text_font="mono_15" style_text_color="#accent_cool" />
+				</lv_obj>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- bolum basligi -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_label text="SAATLİK" style_text_font="mono_13" style_text_color="#text_3" style_text_letter_space="2" />
+			<lv_label text="12:00 – 24:00" style_text_font="mono_12" style_text_color="#text_3" />
+		</lv_obj>
+
+		<!-- saatlik kartlar: yatay kaydirilir -->
+		<lv_obj
+			name="hour_strip"
+			scroll_chain_hor="false"
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_pad_column="7"
+			style_pad_bottom="9"
+		>
+			<style name="plain" />
+
+			<!-- "ŞİMDİ" karti yerel stille vurgulanir -->
+			<hour_card
+				time="ŞİMDİ"
+				icon="wx_partly_34"
+				temp="24°"
+				pop="%10"
+				accent="#accent_warm"
+				style_bg_color="#accent_warm"
+				style_bg_opa="36"
+				style_border_color="#accent_warm"
+				style_border_width="2"
+			/>
+
+			<hour_card time="13:00" icon="wx_sun_34" temp="25°" pop="0%" pop_color="#text_3" />
+			<hour_card time="14:00" icon="wx_sun_34" temp="26°" pop="0%" pop_color="#text_3" />
+			<hour_card time="15:00" icon="wx_partly_34" temp="26°" pop="%10" />
+			<hour_card time="16:00" icon="wx_partly_34" temp="25°" pop="%20" />
+			<hour_card time="17:00" icon="wx_cloud_34" temp="24°" pop="%30" />
+			<hour_card time="18:00" icon="wx_rain_34" temp="22°" pop="%60" />
+			<hour_card time="19:00" icon="wx_rain_34" temp="21°" pop="%70" />
+			<hour_card time="20:00" icon="wx_cloud_34" temp="20°" pop="%40" />
+		</lv_obj>
+
+		<!-- asagi kaydirma ipucu -->
+		<lv_obj
+			name="scroll_hint"
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="center"
+			style_flex_cross_place="center"
+			style_pad_column="10"
+		>
+			<style name="plain" />
+			<lv_image src="ui_chevdown" style_image_recolor="#text_3" style_image_recolor_opa="255" />
+			<lv_label
+				text="5 GÜNLÜK TAHMİN İÇİN KAYDIR"
+				style_text_font="mono_12"
+				style_text_color="#text_3"
+				style_text_letter_space="2"
+			/>
+		</lv_obj>
+	</view>
+</component>

@@ -1,0 +1,147 @@
+<!--
+  01 · ANA EKRAN — saat, oda konforu ve gunun hava ozeti.
+
+  Gecisler:
+    saat blogu     -> clock_full     (move_top    / asagi kaydirma)
+    hava seridi    -> weather_hourly (move_left   / sola kaydirma)
+    sayfa noktalari-> weather_hourly (move_left)
+-->
+<component>
+	<view
+		extends="lv_obj"
+		width="800"
+		height="480"
+		flex_flow="column"
+		style_flex_main_place="space_between"
+		style_pad_top="36"
+		style_pad_bottom="30"
+		style_pad_left="48"
+		style_pad_right="48"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="7"
+					height="7"
+					style_radius="4"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label text="BBS" style_text_font="mono_15" style_text_color="#text_2" style_text_letter_space="3" />
+			</lv_obj>
+		</lv_obj>
+
+		<!-- saat + konfor gostergeleri -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj name="clock_block" width="content" height="content" flex_flow="column" style_pad_row="0">
+				<style name="plain" />
+				<lv_label
+					name="clock"
+					bind_text="clock_time"
+					style_text_font="disp_142"
+					style_text_color="#text_1"
+					style_text_letter_space="-3"
+				/>
+				<lv_label
+					name="date"
+					bind_text="clock_date"
+					style_text_font="mono_17"
+					style_text_color="#text_2"
+					style_text_letter_space="2"
+				/>
+			</lv_obj>
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<!-- sicaklik 0..40 °C tam olcekte gosterilir (224 = 22.4 °C) -->
+				<stat_gauge
+					name="gauge_temp"
+					min_value="0"
+					max_value="60"
+					value="22"
+					text="22"
+					unit="°C"
+					caption=""
+					accent="#accent_warm"
+				/>
+				<stat_gauge
+					name="gauge_hum"
+					min_value="0"
+					max_value="100"
+					value="50"
+					text="48"
+					unit="%"
+					caption=""
+					accent="#accent_cool"
+				/>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- gunun hava ozeti: yalnizca ikon -->
+		<lv_obj
+			name="daily_strip"
+			width="100%"
+			height="132"
+			flex_flow="row"
+			style_flex_track_place="center"
+			style_pad_gap="10"
+			style_pad_hor="12"
+		>
+			<style name="panel" />
+			<day_slot icon="wx_partly_46" label="SABAH" />
+			<lv_obj width="1" height="56">
+				<style name="divider" />
+			</lv_obj>
+
+			<day_slot icon="wx_sun_46" label="ÖĞLE" />
+			<lv_obj width="1" height="56">
+				<style name="divider" />
+			</lv_obj>
+
+			<day_slot icon="wx_partly_46" label="İKİNDİ" />
+			<lv_obj width="1" height="56">
+				<style name="divider" />
+			</lv_obj>
+
+			<day_slot icon="wx_rain_46" label="AKŞAM" />
+			<lv_obj width="1" height="56">
+				<style name="divider" />
+			</lv_obj>
+
+			<day_slot icon="wx_moon_46" label="GECE" />
+		</lv_obj>
+	</view>
+</component>

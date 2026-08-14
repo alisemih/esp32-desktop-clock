@@ -1,0 +1,192 @@
+<!--
+  05 · WI-FI · AĞLAR — saatlik hava ekranindan sola kaydirinca gelir.
+
+  Acma/kapama icin gercek lv_switch kullanilir ve wifi_enabled subject'ine
+  baglanir. Sinyal seviyesi ikonlarda pasif yaylar soluk cizilidir.
+
+  Gecisler:
+    ust bar etiketi -> weather_hourly (move_right / saga kaydirma)
+    Yılmaz_Ev satiri-> wifi_password  (move_top   / detaya inis)
+-->
+<component>
+	<view
+		extends="lv_obj"
+		width="800"
+		height="480"
+		flex_flow="column"
+		style_pad_top="32"
+		style_pad_bottom="26"
+		style_pad_left="44"
+		style_pad_right="44"
+		style_pad_row="14"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj
+				name="back_weather"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="7"
+					height="7"
+					style_radius="4"
+					style_bg_color="#accent_cool"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="AYARLAR · WI-FI"
+					style_text_font="mono_15"
+					style_text_color="#text_2"
+					style_text_letter_space="3"
+				/>
+			</lv_obj>
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="12"
+			>
+				<style name="plain" />
+				<lv_label
+					text="AÇIK"
+					style_text_font="mono_13"
+					style_text_color="#text_2"
+					style_text_letter_space="2"
+				/>
+
+				<lv_switch name="wifi_toggle" width="46" height="26" bind_checked="wifi_enabled">
+					<style name="sw_track" />
+					<style name="sw_ind_off" selector="indicator" />
+					<style name="sw_ind_on" selector="indicator|checked" />
+					<style name="sw_knob" selector="knob" />
+					<style name="sw_knob_on" selector="knob|checked" />
+				</lv_switch>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- baslik + tarama durumu -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="end"
+		>
+			<style name="plain" />
+
+			<lv_obj width="content" height="content" flex_flow="column" style_pad_row="6">
+				<style name="plain" />
+				<lv_label text="Ağlar" style_text_font="disp_44" style_text_color="#text_1" />
+				<lv_obj
+					width="content"
+					height="content"
+					flex_flow="row"
+					style_flex_cross_place="center"
+					style_pad_column="9"
+				>
+					<style name="plain" />
+					<lv_obj
+						width="6"
+						height="6"
+						style_radius="3"
+						style_bg_color="#accent_cool"
+						style_bg_opa="255"
+						style_border_width="0"
+					/>
+					<lv_label
+						text="6 AĞ BULUNDU · İSTANBUL"
+						style_text_font="mono_13"
+						style_text_color="#text_3"
+						style_text_letter_space="2"
+					/>
+				</lv_obj>
+			</lv_obj>
+
+			<lv_button
+				name="rescan"
+				width="content"
+				height="32"
+				flex_flow="row"
+				style_flex_track_place="center"
+				style_pad_column="8"
+				style_pad_hor="14"
+				style_pad_top="3"
+				style_bg_opa="0"
+				style_radius="11"
+				style_border_color="#hairline"
+				style_border_opa="26"
+				style_border_width="1"
+			>
+				<lv_image src="ui_refresh" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+				<lv_label
+					text="YENİLE"
+					style_text_font="mono_12"
+					style_text_color="#text_2"
+					style_text_letter_space="2"
+				/>
+			</lv_button>
+		</lv_obj>
+
+		<!-- taranan aglar -->
+		<lv_obj width="100%" flex_grow="1" flex_flow="column">
+			<style name="plain" />
+
+			<!-- bagli ag: rozet var, chevron yok -->
+			<wifi_row
+				icon="ui_wifi_conn"
+				ssid="TTNET_ZYXEL_5G"
+				meta="GÜVENLİ · WPA2"
+				accent="#text_2"
+				badge_text="BAĞLI"
+				badge_opa="255"
+				chev_opa="0"
+			/>
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<!-- secili ag: amber vurgu, dokununca sifre ekranina iner -->
+			<wifi_row
+				name="net_selected"
+				icon="ui_wifi_3"
+				ssid="Yılmaz_Ev"
+				meta="GÜVENLİ · WPA2"
+				accent="#accent_warm"
+				style_bg_color="#accent_warm"
+				style_bg_opa="36"
+				style_radius="14"
+			/>
+
+			<wifi_row icon="ui_wifi_2" ssid="Superonline_Fiber" meta="GÜVENLİ · WPA2" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<wifi_row icon="ui_wifi_2" ssid="AirTies_Air4240" meta="GÜVENLİ · WPA2" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<!-- acik ag: kilit yok -->
+			<wifi_row icon="ui_wifi_1" ssid="Misafir" meta="AÇIK AĞ · ŞİFRESİZ" lock_opa="0" />
+		</lv_obj>
+	</view>
+</component>

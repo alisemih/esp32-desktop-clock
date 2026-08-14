@@ -1,0 +1,90 @@
+<!--
+  wifi_row — taranmis Wi-Fi aginin liste satiri.
+
+  Bes satir cesidinin tamami tek bilesenle karsilanir; farklar opaklik ve renk
+  proplariyla verilir:
+    bagli ag  -> badge_opa="255", chev_opa="0"
+    secili ag -> accent="#F4A65A" ve kullanim yerinde row_selected stili
+    acik ag   -> lock_opa="0"
+
+  Tiklandiginda iki is yapar, sirasi onemli:
+    1) wifi_ssid subject'ine kendi $ssid degerini yazar
+    2) wifi_password ekranini acar
+  O ekrandaki baslik bind_text="wifi_ssid" ile ayni subject'e bagli
+  oldugu icin, hangi satira tiklandiysa onun adi gorunur.
+-->
+<component>
+	<api>
+		<prop name="icon" type="image" />
+		<prop name="ssid" type="string" default="" />
+		<prop name="meta" type="string" default="" />
+		<prop name="accent" type="color" default="0x5A6672" />
+		<prop name="lock_opa" type="int" default="255" />
+		<prop name="chev_opa" type="int" default="255" />
+		<prop name="badge_text" type="string" default="" />
+		<prop name="badge_opa" type="int" default="0" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		width="100%"
+		height="58"
+		flex_flow="row"
+		style_flex_cross_place="center"
+		style_pad_column="16"
+		style_pad_left="8"
+		style_pad_right="8"
+	>
+		<subject_set_string_event trigger="clicked" subject="wifi_ssid" value="$ssid" />
+		<screen_load_event screen="wifi_password" trigger="clicked" anim_type="move_top" duration="500" />
+		<style name="plain" />
+
+		<lv_image name="signal" src="$icon" />
+
+		<!-- Ag adi + guvenlik bilgisi -->
+		<lv_obj flex_grow="1" height="content" flex_flow="column" style_pad_row="3">
+			<style name="plain" />
+			<lv_label name="ssid" text="$ssid" style_text_font="mono_17" style_text_color="#text_1" />
+			<lv_label
+				name="meta"
+				text="$meta"
+				style_text_font="mono_12"
+				style_text_color="#text_3"
+				style_text_letter_space="1"
+			/>
+		</lv_obj>
+
+		<!-- "BAĞLI" rozeti: kullanilmadiginda opaklik 0 -->
+		<lv_label
+			name="badge"
+			text="$badge_text"
+			style_opa="$badge_opa"
+			style_text_font="mono_12"
+			style_text_color="#accent_cool"
+			style_text_letter_space="2"
+			style_bg_color="#accent_cool"
+			style_bg_opa="36"
+			style_radius="7"
+			style_pad_top="5"
+			style_pad_bottom="5"
+			style_pad_left="9"
+			style_pad_right="9"
+		/>
+
+		<lv_image
+			name="lock"
+			src="ui_lock"
+			style_opa="$lock_opa"
+			style_image_recolor="$accent"
+			style_image_recolor_opa="255"
+		/>
+
+		<lv_image
+			name="chevron"
+			src="ui_chevron"
+			style_opa="$chev_opa"
+			style_image_recolor="$accent"
+			style_image_recolor_opa="255"
+		/>
+	</view>
+</component>

@@ -1,0 +1,77 @@
+<!--
+  stat_gauge — oda konforu icin yay gostergesi (tasarimin imza ogesi).
+
+  Analog barometreyi animsatan 270 derecelik yay: bg_start_angle="135" ile
+  bg_end_angle="45" arasi saat yonunde donerek altta 90 derecelik bir bosluk
+  birakir. Tutamak (knob) gizlenir cunku bu salt-okunur bir gostergedir.
+-->
+<component>
+	<api>
+		<prop name="value" type="int" default="0" />
+		<prop name="min_value" type="int" default="0" />
+		<prop name="max_value" type="int" default="100" />
+		<prop name="text" type="string" default="" />
+		<prop name="unit" type="string" default="" />
+		<prop name="caption" type="string" default="" />
+		<prop name="accent" type="color" default="0xF4A65A" />
+	</api>
+
+	<view extends="lv_obj" width="140" height="content" flex_flow="column" style_flex_cross_place="center">
+		<style name="plain" />
+
+		<lv_arc
+			name="dial"
+			width="140"
+			height="140"
+			min_value="$min_value"
+			max_value="$max_value"
+			value="$value"
+			bg_start_angle="135"
+			bg_end_angle="45"
+			style_arc_color-indicator="$accent"
+			style_arc_width-indicator="12"
+			style_arc_rounded-indicator="true"
+		>
+			<style name="gauge_track" />
+			<style name="no_knob" selector="knob" />
+
+			<!--
+			  Deger + birim tek bir satir kabinda toplanir ve KAP merkeze
+			  hizalanir. Iki etikete ayri ayri align="center" verilirse
+			  ikisi de yayin merkezine oturur ve ust uste biner.
+
+			  flex_cross_place="end" ikisini alt kenardan hizalar; boylece
+			  kucuk birim, buyuk sayinin taban cizgisine oturmus gorunur.
+			  Birimi yukari/asagi kaydirmak icin unit'e style_pad_bottom ver.
+			-->
+			<lv_obj
+				name="readout_box"
+				align="center"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="end"
+				style_pad_column="2"
+			>
+				<style name="plain" />
+				<lv_label name="readout" text="$text" style_text_font="mono_34" style_text_color="#text_1" />
+				<lv_label
+					name="unit"
+					text="$unit"
+					style_text_font="mono_19"
+					style_text_color="#text_1"
+					style_pad_bottom="4"
+					style_pad_left="3"
+				/>
+			</lv_obj>
+		</lv_arc>
+
+		<lv_label
+			name="caption"
+			text="$caption"
+			style_text_font="mono_12"
+			style_text_color="#text_3"
+			style_text_letter_space="2"
+		/>
+	</view>
+</component>

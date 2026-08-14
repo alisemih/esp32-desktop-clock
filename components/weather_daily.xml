@@ -1,0 +1,99 @@
+<!--
+  04 · 5 GÜNLÜK TAHMİN — saatlik gorunumden asagi kaydirinca gelir.
+
+  Her satirin sicaklik araligi lv_bar RANGE modu ile cizilir; ortak 16..29
+  olcegi sayesinde yagmurlu gunler solda, sicak gunler sagda toplanir.
+
+  Gecis: baslik -> weather_hourly (move_bottom / yukari kaydirma)
+-->
+<component>
+	<view extends="lv_obj" width="800" height="480"
+		flex_flow="column"
+		style_pad_top="32"
+		style_pad_bottom="28"
+		style_pad_left="48"
+		style_pad_right="48"
+		style_pad_row="18"
+	>
+		<style name="screen_root" />
+
+		<!-- baslik -->
+		<lv_obj
+			name="header"
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="7"
+					height="7"
+					style_radius="4"
+					style_bg_color="#accent_cool"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="5 GÜNLÜK TAHMİN"
+					style_text_font="mono_15"
+					style_text_color="#text_2"
+					style_text_letter_space="3"
+				/>
+			</lv_obj>
+
+			<lv_label
+				text="İSTANBUL"
+				style_text_font="mono_13"
+				style_text_color="#text_3"
+				style_text_letter_space="2"
+			/>
+
+		</lv_obj>
+
+		<!-- gunler -->
+		<lv_obj width="100%" flex_grow="1" flex_flow="column">
+			<style name="plain" />
+
+			<forecast_row day="BUGÜN" icon="wx_sun_34" cond="Güneşli" lo="19°" hi="27°" lo_val="19" hi_val="27" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<forecast_row
+				day="ÇARŞAMBA"
+				icon="wx_partly_34"
+				cond="Parçalı Bulutlu"
+				lo="18°"
+				hi="26°"
+				lo_val="18"
+				hi_val="26"
+			/>
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<forecast_row day="PERŞEMBE" icon="wx_rain_34" cond="Yağmurlu" lo="16°" hi="22°" lo_val="16" hi_val="22" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<forecast_row day="CUMA" icon="wx_cloud_34" cond="Bulutlu" lo="17°" hi="24°" lo_val="17" hi_val="24" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+
+			<forecast_row day="CUMARTESİ" icon="wx_sun_34" cond="Güneşli" lo="20°" hi="29°" lo_val="20" hi_val="29" />
+		</lv_obj>
+	</view>
+</component>

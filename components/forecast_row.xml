@@ -1,0 +1,68 @@
+<!--
+  forecast_row — 5 gunluk tahmin satiri.
+
+  Sicaklik araligi icin lv_bar'in RANGE modu birebir uygun: start_value=dusuk,
+  value=yuksek. Ortak min/max (16..29) sayesinde her gunun cubugu ayni olcekte
+  konumlanir, boylece serin gunler solda, sicak gunler sagda toplanir.
+  Gosterge camgobegi -> amber yatay gecisle boyanir.
+-->
+<component>
+	<api>
+		<prop name="day" type="string" default="" />
+		<prop name="icon" type="image" />
+		<prop name="cond" type="string" default="" />
+		<prop name="lo" type="string" default="" />
+		<prop name="hi" type="string" default="" />
+		<prop name="lo_val" type="int" default="16" />
+		<prop name="hi_val" type="int" default="29" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		width="100%"
+		height="76"
+		flex_flow="row"
+		style_flex_cross_place="center"
+		style_flex_track_place="center"
+		style_pad_column="20"
+	>
+		<style name="plain" />
+
+		<!-- Ikon + gun adi: sabit genislik, sutunlar hizali kalsin -->
+		<lv_obj width="214" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="16">
+			<style name="plain" />
+			<lv_image name="icon" src="$icon" />
+			<lv_label name="day" text="$day" style_text_font="mono_17" style_text_color="#text_1" />
+		</lv_obj>
+
+		<lv_label name="cond" text="$cond" flex_grow="1" style_text_font="mono_15" style_text_color="#text_2" />
+
+		<lv_label
+			name="lo"
+			text="$lo"
+			width="40"
+			style_text_align="right"
+			style_text_font="mono_15"
+			style_text_color="#accent_cool"
+		/>
+
+		<lv_bar
+			name="range"
+			width="200"
+			height="6"
+			mode="range"
+			min_value="16"
+			max_value="29"
+			start_value="$lo_val"
+			value="$hi_val"
+			style_radius-indicator="3"
+			style_bg_color-indicator="#accent_cool"
+			style_bg_grad_color-indicator="#accent_warm"
+			style_bg_grad_dir-indicator="hor"
+		>
+			<style name="track" />
+		</lv_bar>
+
+		<lv_label name="hi" text="$hi" width="40" style_text_font="mono_15" style_text_color="#accent_warm" />
+	</view>
+</component>

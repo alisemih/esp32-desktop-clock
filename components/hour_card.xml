@@ -1,0 +1,32 @@
+<!--
+  hour_card — saatlik tahmin karti (saat / ikon / sicaklik / yagis olasiligi).
+
+  "ŞİMDİ" karti ayri bir bilesen degil: kullanim yerinde yerel stil ile
+  vurgulanir (bkz. weather_hourly.xml). Boylece tek bir kart tanimi yeter.
+-->
+<component>
+    <api>
+        <prop name="time"     type="string" default=""/>
+        <prop name="icon"     type="image"/>
+        <prop name="temp"     type="string" default=""/>
+        <prop name="pop"      type="string" default=""/>
+        <prop name="accent"   type="color"  default="0x93A0AD"/>
+        <prop name="pop_color" type="color" default="0x6DC7E8"/>
+    </api>
+
+    <view extends="lv_obj" width="84" height="content"
+          flex_flow="column" style_flex_cross_place="center" style_pad_row="11">
+        <style name="card"/>
+
+        <lv_label name="time" text="$time"
+                  style_text_font="mono_13" style_text_color="$accent"/>
+
+        <lv_image name="icon" src="$icon"/>
+
+        <lv_label name="temp" text="$temp"
+                  style_text_font="mono_19" style_text_color="#text_1"/>
+
+        <lv_label name="pop" text="$pop"
+                  style_text_font="mono_12" style_text_color="$pop_color"/>
+    </view>
+</component>

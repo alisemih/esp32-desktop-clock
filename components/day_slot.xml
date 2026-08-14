@@ -1,0 +1,34 @@
+<!--
+  day_slot — gunluk hava seridindeki tek dilim (SABAH / ÖĞLE / İKİNDİ / AKŞAM / GECE).
+  Sadece ikon + etiket: ilk ekranda sayi yok, bakisi yormayan ozet.
+  flex_grow="1" ile serit icinde esit genislik paylasir.
+-->
+<component>
+	<api>
+		<prop name="icon" type="image" />
+		<prop name="label" type="string" default="" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		flex_grow="1"
+		height="content"
+		flex_flow="column"
+		style_flex_cross_place="center"
+		style_flex_main_place="center"
+		style_flex_track_place="center"
+		style_pad_row="12"
+	>
+		<style name="plain" />
+
+		<lv_image name="period_icon" src="$icon" />
+
+		<lv_label
+			name="period_label"
+			text="$label"
+			style_text_font="mono_12"
+			style_text_color="#text_2"
+			style_text_letter_space="2"
+		/>
+	</view>
+</component>

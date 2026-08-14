@@ -1,0 +1,94 @@
+<!--
+  ANA EKRAN — kaydirmali sayfalayici (3 sutun)
+
+  Bes sayfa tek ekranda. Gezinme dokunma ile degil, parmakla kaydirarak olur:
+  kabin icerigi kendisinden buyuk oldugu icin LVGL onu kaydirilabilir yapar,
+  snap da birakinca en yakin sayfaya oturtur.
+
+      sutun 0          sutun 1            sutun 2
+    ┌──────────────┬──────────────────┬──────────────────┐
+    │ home_main    │ weather_hourly   │ wifi_list        │  satir 0
+    ├──────────────┼──────────────────┼──────────────────┘
+    │ clock_full   │ weather_daily    │                     satir 1
+    └──────────────┴──────────────────┘
+
+  Dis kap yatayda 3 sutun arasinda, ilk iki sutun dikeyde 2 sayfa arasinda
+  snap yapar. Wi-Fi'ye weather_hourly'den sola kaydirarak gidilir.
+
+  wifi_password BURADA DEGIL: kaydirmayla degil, listedeki secili aga
+  tiklayarak acilmasi istendigi icin ayri bir ekran oldu
+  (screens/wifi_password.xml) ve screen_load_event ile aciliyor.
+  Bu ekranin permanent="true" olmasi sart: sifre ekranindan donuldugunde
+  yok edilmesin ve sayfalayicinin kaydirma konumu korunsun.
+
+  scroll_one="true"  -> ne kadar sert savurulursa savurulsun tek sayfa ilerler
+  scroll_elastic     -> kenarda lastik efekti kapali, cihaz hissi net kalsin
+  scrollbar_mode     -> cubuk gorunmez
+
+  Sayfa boyutu 800x480'dir; kaplarda dolgu/bosluk/kenarlik sifir olmali,
+  yoksa sayfalar 800'un katlarina denk gelmez ve hizalama kayar.
+-->
+<screen permanent="true">
+	<view
+		extends="lv_obj"
+		width="800"
+		height="480"
+		flex_flow="row"
+		scroll_snap_x="center"
+		scroll_one="true"
+		scroll_elastic="false"
+		scrollbar_mode="auto"
+		style_pad_all="0"
+		style_pad_column="0"
+	>
+		<style name="screen_root" />
+		<style name="scroll_pill" selector="scrollbar" />
+
+		<!-- sutun 0 — saat tarafi -->
+		<lv_obj
+			name="col_home"
+			width="800"
+			height="480"
+			flex_flow="column"
+			scroll_snap_y="center"
+			scroll_one="true"
+			scroll_elastic="false"
+			scrollbar_mode="off"
+		>
+			<style name="page_col" />
+			<home_main />
+			<clock_full />
+		</lv_obj>
+
+		<!-- sutun 1 — hava durumu -->
+		<lv_obj
+			name="col_weather"
+			width="800"
+			height="480"
+			flex_flow="column"
+			scroll_snap_y="center"
+			scroll_one="true"
+			scroll_elastic="false"
+			scrollbar_mode="off"
+		>
+			<style name="page_col" />
+			<weather_hourly />
+			<weather_daily />
+		</lv_obj>
+
+		<!-- sutun 2 — Wi-Fi kurulumu -->
+		<lv_obj
+			name="col_wifi"
+			width="800"
+			height="480"
+			flex_flow="column"
+			scroll_snap_y="center"
+			scroll_one="true"
+			scroll_elastic="false"
+			scrollbar_mode="off"
+		>
+			<style name="page_col" />
+			<wifi_list />
+		</lv_obj>
+	</view>
+</screen>

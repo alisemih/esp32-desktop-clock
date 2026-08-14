@@ -1,0 +1,44 @@
+<!--
+  02 · SAAT — ana ekrandan asagi kaydirinca gelen sakin gorunum.
+
+  Gece odayi aydinlatmamasi icin tek is yapar: saati gostermek. Saniye cubugu
+  lv_bar ile 0..59 araliginda ilerler; clock_second subject'i her saniye
+  guncellenince cubuk kendiliginden akar.
+
+  Gecis: ekranin herhangi bir yeri -> home_main (move_bottom / yukari kaydirma)
+-->
+<component>
+	<view extends="lv_obj" width="800" height="480" flex_flow="column" style_flex_main_place="center" style_flex_cross_place="center" style_pad_row="26">
+		<style name="screen_root" />
+
+		<lv_label
+			name="clock"
+			bind_text="clock_time"
+			style_text_font="disp_232"
+			style_text_color="#text_1"
+			style_text_letter_space="-5"
+		/>
+
+		<lv_label
+			name="date"
+			bind_text="clock_date_long"
+			style_text_font="mono_19"
+			style_text_color="#text_2"
+			style_text_letter_space="5"
+		/>
+
+		<lv_bar
+			name="seconds"
+			width="240"
+			height="4"
+			min_value="0"
+			max_value="59"
+			bind_value="clock_second"
+			style_radius-indicator="2"
+			style_bg_color-indicator="#accent_warm"
+		>
+			<style name="track" />
+		</lv_bar>
+
+	</view>
+</component>
