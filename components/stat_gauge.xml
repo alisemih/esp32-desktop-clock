@@ -56,7 +56,7 @@
 				<style name="plain" />
 				<lv_label name="readout" text="$text" style_text_font="mono_34" style_text_color="#text_1" />
 				<lv_label
-					name="unit"
+					name="gauge_unit"
 					text="$unit"
 					style_text_font="mono_19"
 					style_text_color="#text_1"
@@ -67,7 +67,7 @@
 		</lv_arc>
 
 		<lv_label
-			name="caption"
+			name="gauge_caption"
 			text="$caption"
 			style_text_font="mono_12"
 			style_text_color="#text_3"

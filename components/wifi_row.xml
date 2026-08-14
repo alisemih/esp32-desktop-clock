@@ -44,9 +44,9 @@
 		<!-- Ag adi + guvenlik bilgisi -->
 		<lv_obj flex_grow="1" height="content" flex_flow="column" style_pad_row="3">
 			<style name="plain" />
-			<lv_label name="ssid" text="$ssid" style_text_font="mono_17" style_text_color="#text_1" />
+			<lv_label name="row_ssid" text="$ssid" style_text_font="mono_17" style_text_color="#text_1" />
 			<lv_label
-				name="meta"
+				name="row_meta"
 				text="$meta"
 				style_text_font="mono_12"
 				style_text_color="#text_3"
