@@ -29,30 +29,24 @@
 		>
 			<style name="plain" />
 
+			<style name="plain" />
 			<lv_obj
-				name="back_weather"
+				name="back"
 				width="content"
 				height="content"
 				flex_flow="row"
 				style_flex_cross_place="center"
-				style_pad_column="10"
+				style_pad_column="8"
 			>
 				<style name="plain" />
-				<lv_obj
-					width="7"
-					height="7"
-					style_radius="4"
-					style_bg_color="#accent_cool"
-					style_bg_opa="255"
-					style_border_width="0"
-				/>
+				<lv_image src="ui_back" style_image_recolor="#text_2" style_image_recolor_opa="255" />
 				<lv_label
-					text="AYARLAR · WI-FI"
-					style_text_font="mono_15"
+					text="GERİ"
+					style_text_font="mono_13"
 					style_text_color="#text_2"
-					style_text_letter_space="3"
+					style_text_letter_space="2"
 				/>
-				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_right" duration="300" />
 			</lv_obj>
 
 			<lv_obj
