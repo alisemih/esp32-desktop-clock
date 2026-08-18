@@ -42,7 +42,7 @@
 					style_text_color="#text_2"
 					style_text_letter_space="2"
 				/>
-				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_right" duration="300" />
 			</lv_obj>
 			<lv_label
 				name="cancel"
@@ -51,7 +51,7 @@
 				style_text_color="#text_3"
 				style_text_letter_space="2"
 			>
-				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_right" duration="300" />
 			</lv_label>
 		</lv_obj>
 
