@@ -76,7 +76,7 @@ lv_obj_t * wifi_password_create(void)
         lv_obj_set_style_text_color(lv_label_0, TEXT_2, 0);
         lv_obj_set_style_text_letter_space(lv_label_0, 2, 0);
 
-        lv_obj_add_screen_load_event(back, LV_EVENT_CLICKED, main_screen, LV_SCREEN_LOAD_ANIM_MOVE_BOTTOM, 500, 0);
+        lv_obj_add_screen_load_event(back, LV_EVENT_CLICKED, main_screen, LV_SCREEN_LOAD_ANIM_MOVE_BOTTOM, 300, 0);
 
         lv_obj_t * lv_obj_2 = lv_obj_create(lv_obj_0);
         lv_obj_set_width(lv_obj_2, lv_pct(100));
@@ -178,7 +178,7 @@ lv_obj_t * wifi_password_create(void)
         lv_obj_set_style_text_color(lv_label_3, BG_BASE, 0);
         lv_obj_set_style_text_letter_space(lv_label_3, 2, 0);
 
-        lv_obj_add_screen_load_event(connect, LV_EVENT_CLICKED, main_screen, LV_SCREEN_LOAD_ANIM_MOVE_BOTTOM, 500, 0);
+        lv_obj_add_screen_load_event(connect, LV_EVENT_CLICKED, main_screen, LV_SCREEN_LOAD_ANIM_MOVE_BOTTOM, 300, 0);
 
         lv_obj_t * keyboard = lv_keyboard_create(lv_obj_0);
         lv_obj_set_name(keyboard, "keyboard");

@@ -49,6 +49,27 @@ lv_obj_t * clock_full_create(lv_obj_t * parent)
         lv_obj_set_style_pad_row(lv_obj_0, 26, 0);
 
         lv_obj_add_style(lv_obj_0, &screen_root, 0);
+        lv_obj_t * btn_alarm = lv_obj_create(lv_obj_0);
+        lv_obj_set_name(btn_alarm, "btn_alarm");
+        lv_obj_set_align(btn_alarm, LV_ALIGN_TOP_RIGHT);
+        lv_obj_set_flag(btn_alarm, LV_OBJ_FLAG_IGNORE_LAYOUT, true);
+        lv_obj_set_x(btn_alarm, -36);
+        lv_obj_set_y(btn_alarm, 28);
+        lv_obj_set_width(btn_alarm, 44);
+        lv_obj_set_height(btn_alarm, 44);
+        lv_obj_set_flex_flow(btn_alarm, LV_FLEX_FLOW_ROW);
+        lv_obj_set_style_flex_main_place(btn_alarm, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_flex_cross_place(btn_alarm, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_flex_track_place(btn_alarm, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_bg_opa(btn_alarm, 0, 0);
+        lv_obj_set_style_border_width(btn_alarm, 0, 0);
+        lv_obj_t * lv_image_0 = lv_image_create(btn_alarm);
+        lv_image_set_src(lv_image_0, ui_bell_lg);
+        lv_obj_set_style_image_recolor(lv_image_0, TEXT_2, 0);
+        lv_obj_set_style_image_recolor_opa(lv_image_0, 255, 0);
+
+        lv_obj_add_screen_load_event(btn_alarm, LV_EVENT_CLICKED, alarm_set, LV_SCREEN_LOAD_ANIM_MOVE_TOP, 300, 0);
+
         lv_obj_t * clock = lv_label_create(lv_obj_0);
         lv_obj_set_name(clock, "clock");
         lv_label_bind_text(clock, &clock_time, NULL);

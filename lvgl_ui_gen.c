@@ -53,7 +53,12 @@ static uint32_t lvgl_ui_target = LVGL_UI_TARGET_ALL;
  *  Permanent screens
  *-------------------*/
 
+lv_obj_t * alarm_set = NULL;
+lv_obj_t * location = NULL;
 lv_obj_t * main_screen = NULL;
+lv_obj_t * settings = NULL;
+lv_obj_t * time_date = NULL;
+lv_obj_t * wifi_list = NULL;
 lv_obj_t * wifi_password = NULL;
 
 /*----------------
@@ -84,6 +89,14 @@ lv_font_t * mono_13;
 extern lv_font_t mono_13_data;
 lv_font_t * mono_12;
 extern lv_font_t mono_12_data;
+lv_font_t * disp_52;
+extern lv_font_t disp_52_data;
+lv_font_t * disp_22;
+extern lv_font_t disp_22_data;
+lv_font_t * disp_18;
+extern lv_font_t disp_18_data;
+lv_font_t * mono_16;
+extern lv_font_t mono_16_data;
 
 /*----------------
  * Images
@@ -146,6 +159,28 @@ const void * ui_wifi_1 = NULL;
 extern const void * ui_wifi_1_data;
 const void * ui_wifi_conn = NULL;
 extern const void * ui_wifi_conn_data;
+const void * ui_bell = NULL;
+extern const void * ui_bell_data;
+const void * ui_clock = NULL;
+extern const void * ui_clock_data;
+const void * ui_speaker = NULL;
+extern const void * ui_speaker_data;
+const void * ui_pin = NULL;
+extern const void * ui_pin_data;
+const void * ui_pin_lg = NULL;
+extern const void * ui_pin_lg_data;
+const void * ui_search = NULL;
+extern const void * ui_search_data;
+const void * ui_close = NULL;
+extern const void * ui_close_data;
+const void * ui_check = NULL;
+extern const void * ui_check_data;
+const void * ui_wifi_plain = NULL;
+extern const void * ui_wifi_plain_data;
+const void * ui_gear = NULL;
+extern const void * ui_gear_data;
+const void * ui_bell_lg = NULL;
+extern const void * ui_bell_lg_data;
 
 /*----------------
  * Global styles
@@ -178,6 +213,15 @@ lv_style_t sw_ind_off;
 lv_style_t sw_ind_on;
 lv_style_t sw_knob;
 lv_style_t sw_knob_on;
+lv_style_t roller_main;
+lv_style_t roller_sel;
+lv_style_t chip;
+lv_style_t chip_on;
+lv_style_t hub_card;
+lv_style_t search_field;
+lv_style_t row_active;
+lv_style_t btn_primary;
+lv_style_t roller_date_sel;
 
 /*----------------
  * Subjects
@@ -197,6 +241,13 @@ lv_subject_t out_feels;
 lv_subject_t wifi_ssid;
 lv_subject_t wifi_enabled;
 lv_subject_t wifi_found;
+lv_subject_t alarm_sound;
+lv_subject_t alarm_enabled;
+lv_subject_t time_auto;
+lv_subject_t time_24h;
+lv_subject_t loc_auto;
+lv_subject_t loc_city;
+lv_subject_t loc_region;
 
 /**********************
  *      MACROS
@@ -298,6 +349,30 @@ void lvgl_ui_init_gen(const char * asset_path)
             /* mono_12 */
             /* get font 'mono_12' from a C array */
             mono_12 = &mono_12_data;
+
+        }
+        if (!disp_52) {
+            /* disp_52 */
+            /* get font 'disp_52' from a C array */
+            disp_52 = &disp_52_data;
+
+        }
+        if (!disp_22) {
+            /* disp_22 */
+            /* get font 'disp_22' from a C array */
+            disp_22 = &disp_22_data;
+
+        }
+        if (!disp_18) {
+            /* disp_18 */
+            /* get font 'disp_18' from a C array */
+            disp_18 = &disp_18_data;
+
+        }
+        if (!mono_16) {
+            /* mono_16 */
+            /* get font 'mono_16' from a C array */
+            mono_16 = &mono_16_data;
 
         }
     }
@@ -422,6 +497,50 @@ void lvgl_ui_init_gen(const char * asset_path)
         if (!ui_wifi_conn) {
             ui_wifi_conn = &ui_wifi_conn_data;
         }
+        /* ui_bell */
+        if (!ui_bell) {
+            ui_bell = &ui_bell_data;
+        }
+        /* ui_clock */
+        if (!ui_clock) {
+            ui_clock = &ui_clock_data;
+        }
+        /* ui_speaker */
+        if (!ui_speaker) {
+            ui_speaker = &ui_speaker_data;
+        }
+        /* ui_pin */
+        if (!ui_pin) {
+            ui_pin = &ui_pin_data;
+        }
+        /* ui_pin_lg */
+        if (!ui_pin_lg) {
+            ui_pin_lg = &ui_pin_lg_data;
+        }
+        /* ui_search */
+        if (!ui_search) {
+            ui_search = &ui_search_data;
+        }
+        /* ui_close */
+        if (!ui_close) {
+            ui_close = &ui_close_data;
+        }
+        /* ui_check */
+        if (!ui_check) {
+            ui_check = &ui_check_data;
+        }
+        /* ui_wifi_plain */
+        if (!ui_wifi_plain) {
+            ui_wifi_plain = &ui_wifi_plain_data;
+        }
+        /* ui_gear */
+        if (!ui_gear) {
+            ui_gear = &ui_gear_data;
+        }
+        /* ui_bell_lg */
+        if (!ui_bell_lg) {
+            ui_bell_lg = &ui_bell_lg_data;
+        }
     }
     #endif
 
@@ -460,6 +579,15 @@ void lvgl_ui_init_gen(const char * asset_path)
         lv_style_init(&sw_ind_on);
         lv_style_init(&sw_knob);
         lv_style_init(&sw_knob_on);
+        lv_style_init(&roller_main);
+        lv_style_init(&roller_sel);
+        lv_style_init(&chip);
+        lv_style_init(&chip_on);
+        lv_style_init(&hub_card);
+        lv_style_init(&search_field);
+        lv_style_init(&row_active);
+        lv_style_init(&btn_primary);
+        lv_style_init(&roller_date_sel);
 
         lv_style_set_bg_color(&screen_root, BG_BASE);
         lv_style_set_bg_opa(&screen_root, 255);
@@ -592,6 +720,73 @@ void lvgl_ui_init_gen(const char * asset_path)
         lv_style_set_shadow_width(&sw_knob, 0);
         lv_style_set_pad_all(&sw_knob, -2);
         lv_style_set_bg_color(&sw_knob_on, BG_BASE);
+        lv_style_set_bg_opa(&roller_main, 0);
+        lv_style_set_border_width(&roller_main, 0);
+        lv_style_set_pad_all(&roller_main, 0);
+        lv_style_set_text_font(&roller_main, mono_34);
+        lv_style_set_text_color(&roller_main, DIM_ROW);
+        lv_style_set_text_line_space(&roller_main, 26);
+        lv_style_set_text_align(&roller_main, LV_TEXT_ALIGN_CENTER);
+        lv_style_set_bg_color(&roller_sel, BG_WELL);
+        lv_style_set_bg_opa(&roller_sel, 255);
+        lv_style_set_radius(&roller_sel, 12);
+        lv_style_set_border_color(&roller_sel, HAIRLINE);
+        lv_style_set_border_opa(&roller_sel, 26);
+        lv_style_set_border_width(&roller_sel, 0);
+        lv_style_set_text_font(&roller_sel, mono_34);
+        lv_style_set_text_color(&roller_sel, TEXT_1);
+        lv_style_set_bg_color(&chip, BG_WELL);
+        lv_style_set_bg_opa(&chip, 255);
+        lv_style_set_radius(&chip, 20);
+        lv_style_set_border_color(&chip, HAIRLINE);
+        lv_style_set_border_opa(&chip, 20);
+        lv_style_set_border_width(&chip, 1);
+        lv_style_set_text_font(&chip, mono_12);
+        lv_style_set_text_color(&chip, TEXT_3);
+        lv_style_set_text_letter_space(&chip, 1);
+        lv_style_set_bg_color(&chip_on, ACCENT_WARM);
+        lv_style_set_bg_opa(&chip_on, 255);
+        lv_style_set_border_width(&chip_on, 0);
+        lv_style_set_text_color(&chip_on, BG_BASE);
+        lv_style_set_bg_color(&hub_card, BG_RAISED);
+        lv_style_set_bg_opa(&hub_card, 255);
+        lv_style_set_radius(&hub_card, 18);
+        lv_style_set_border_color(&hub_card, HAIRLINE);
+        lv_style_set_border_opa(&hub_card, 20);
+        lv_style_set_border_width(&hub_card, 1);
+        lv_style_set_pad_left(&hub_card, 20);
+        lv_style_set_pad_right(&hub_card, 20);
+        lv_style_set_pad_top(&hub_card, 16);
+        lv_style_set_pad_bottom(&hub_card, 16);
+        lv_style_set_bg_color(&search_field, BG_INSET);
+        lv_style_set_bg_opa(&search_field, 255);
+        lv_style_set_radius(&search_field, 14);
+        lv_style_set_border_color(&search_field, ACCENT_WARM);
+        lv_style_set_border_opa(&search_field, 255);
+        lv_style_set_border_width(&search_field, 2);
+        lv_style_set_text_font(&search_field, mono_16);
+        lv_style_set_text_color(&search_field, TEXT_1);
+        lv_style_set_pad_left(&search_field, 14);
+        lv_style_set_pad_right(&search_field, 14);
+        lv_style_set_bg_color(&row_active, ACCENT_WARM);
+        lv_style_set_bg_opa(&row_active, 36);
+        lv_style_set_radius(&row_active, 14);
+        lv_style_set_border_width(&row_active, 0);
+        lv_style_set_bg_color(&btn_primary, ACCENT_WARM);
+        lv_style_set_bg_opa(&btn_primary, 255);
+        lv_style_set_radius(&btn_primary, 12);
+        lv_style_set_border_width(&btn_primary, 0);
+        lv_style_set_text_font(&btn_primary, mono_15);
+        lv_style_set_text_color(&btn_primary, BG_BASE);
+        lv_style_set_text_letter_space(&btn_primary, 2);
+        lv_style_set_bg_color(&roller_date_sel, BG_WELL);
+        lv_style_set_bg_opa(&roller_date_sel, 255);
+        lv_style_set_radius(&roller_date_sel, 10);
+        lv_style_set_border_color(&roller_date_sel, HAIRLINE);
+        lv_style_set_border_opa(&roller_date_sel, 26);
+        lv_style_set_border_width(&roller_date_sel, 1);
+        lv_style_set_text_font(&roller_date_sel, disp_18);
+        lv_style_set_text_color(&roller_date_sel, TEXT_1);
 
         style_inited = true;
     }
@@ -676,6 +871,34 @@ void lvgl_ui_init_gen(const char * asset_path)
                           );
     lv_subject_init_int(&wifi_enabled, 1);
     lv_subject_init_int(&wifi_found, 6);
+    static char alarm_sound_buf[UI_SUBJECT_STRING_LENGTH];
+    static char alarm_sound_prev_buf[UI_SUBJECT_STRING_LENGTH];
+    lv_subject_init_string(&alarm_sound,
+                           alarm_sound_buf,
+                           alarm_sound_prev_buf,
+                           UI_SUBJECT_STRING_LENGTH,
+                           "Klasik Çan"
+                          );
+    lv_subject_init_int(&alarm_enabled, 1);
+    lv_subject_init_int(&time_auto, 0);
+    lv_subject_init_int(&time_24h, 1);
+    lv_subject_init_int(&loc_auto, 0);
+    static char loc_city_buf[UI_SUBJECT_STRING_LENGTH];
+    static char loc_city_prev_buf[UI_SUBJECT_STRING_LENGTH];
+    lv_subject_init_string(&loc_city,
+                           loc_city_buf,
+                           loc_city_prev_buf,
+                           UI_SUBJECT_STRING_LENGTH,
+                           "İstanbul"
+                          );
+    static char loc_region_buf[UI_SUBJECT_STRING_LENGTH];
+    static char loc_region_prev_buf[UI_SUBJECT_STRING_LENGTH];
+    lv_subject_init_string(&loc_region,
+                           loc_region_buf,
+                           loc_region_prev_buf,
+                           UI_SUBJECT_STRING_LENGTH,
+                           "Marmara Bölgesi"
+                          );
 
     /*----------------
      * Translations
@@ -703,6 +926,10 @@ void lvgl_ui_init_gen(const char * asset_path)
     check_font(&mono_15, "mono_15");
     check_font(&mono_13, "mono_13");
     check_font(&mono_12, "mono_12");
+    check_font(&disp_52, "disp_52");
+    check_font(&disp_22, "disp_22");
+    check_font(&disp_18, "disp_18");
+    check_font(&mono_16, "mono_16");
 
     /* Register fonts */
     lv_xml_register_font(NULL, "disp_232", disp_232);
@@ -717,6 +944,10 @@ void lvgl_ui_init_gen(const char * asset_path)
     lv_xml_register_font(NULL, "mono_15", mono_15);
     lv_xml_register_font(NULL, "mono_13", mono_13);
     lv_xml_register_font(NULL, "mono_12", mono_12);
+    lv_xml_register_font(NULL, "disp_52", disp_52);
+    lv_xml_register_font(NULL, "disp_22", disp_22);
+    lv_xml_register_font(NULL, "disp_18", disp_18);
+    lv_xml_register_font(NULL, "mono_16", mono_16);
 
     /* Register subjects */
     lv_xml_register_subject(NULL, "clock_time", &clock_time);
@@ -733,6 +964,13 @@ void lvgl_ui_init_gen(const char * asset_path)
     lv_xml_register_subject(NULL, "wifi_ssid", &wifi_ssid);
     lv_xml_register_subject(NULL, "wifi_enabled", &wifi_enabled);
     lv_xml_register_subject(NULL, "wifi_found", &wifi_found);
+    lv_xml_register_subject(NULL, "alarm_sound", &alarm_sound);
+    lv_xml_register_subject(NULL, "alarm_enabled", &alarm_enabled);
+    lv_xml_register_subject(NULL, "time_auto", &time_auto);
+    lv_xml_register_subject(NULL, "time_24h", &time_24h);
+    lv_xml_register_subject(NULL, "loc_auto", &loc_auto);
+    lv_xml_register_subject(NULL, "loc_city", &loc_city);
+    lv_xml_register_subject(NULL, "loc_region", &loc_region);
 
     /* Register callbacks */
 #endif
@@ -769,6 +1007,17 @@ void lvgl_ui_init_gen(const char * asset_path)
     lv_xml_register_image(NULL, "ui_wifi_2", ui_wifi_2);
     lv_xml_register_image(NULL, "ui_wifi_1", ui_wifi_1);
     lv_xml_register_image(NULL, "ui_wifi_conn", ui_wifi_conn);
+    lv_xml_register_image(NULL, "ui_bell", ui_bell);
+    lv_xml_register_image(NULL, "ui_clock", ui_clock);
+    lv_xml_register_image(NULL, "ui_speaker", ui_speaker);
+    lv_xml_register_image(NULL, "ui_pin", ui_pin);
+    lv_xml_register_image(NULL, "ui_pin_lg", ui_pin_lg);
+    lv_xml_register_image(NULL, "ui_search", ui_search);
+    lv_xml_register_image(NULL, "ui_close", ui_close);
+    lv_xml_register_image(NULL, "ui_check", ui_check);
+    lv_xml_register_image(NULL, "ui_wifi_plain", ui_wifi_plain);
+    lv_xml_register_image(NULL, "ui_gear", ui_gear);
+    lv_xml_register_image(NULL, "ui_bell_lg", ui_bell_lg);
 #endif
 
 #if !defined(LV_USE_XML) || LV_USE_XML == 0
@@ -778,10 +1027,20 @@ void lvgl_ui_init_gen(const char * asset_path)
     /* If XML is enabled it's assumed that the permanent screens are created
      * manually from XML using lv_xml_create() */
     /* To allow screens to reference each other, create them all before calling the sceen create functions */
+    alarm_set = lv_obj_create(NULL);
+    location = lv_obj_create(NULL);
     main_screen = lv_obj_create(NULL);
+    settings = lv_obj_create(NULL);
+    time_date = lv_obj_create(NULL);
+    wifi_list = lv_obj_create(NULL);
     wifi_password = lv_obj_create(NULL);
 
+    alarm_set_create();
+    location_create();
     main_screen_create();
+    settings_create();
+    time_date_create();
+    wifi_list_create();
     wifi_password_create();
 #endif
 }

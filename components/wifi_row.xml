@@ -36,7 +36,7 @@
 		style_pad_right="8"
 	>
 		<subject_set_string_event trigger="clicked" subject="wifi_ssid" value="$ssid" />
-		<screen_load_event screen="wifi_password" trigger="clicked" anim_type="move_top" duration="500" />
+		<screen_load_event screen="wifi_password" trigger="clicked" anim_type="move_top" duration="300" />
 		<style name="plain" />
 
 		<lv_image name="signal" src="$icon" />

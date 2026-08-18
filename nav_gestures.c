@@ -47,7 +47,7 @@ lv_obj_t * wifi_list_create(void);
 lv_obj_t * wifi_password_create(void);
 
 /* HTML demosundaki .52s gecis suresiyle ayni hissi verir. */
-#define NAV_ANIM_MS 500
+#define NAV_ANIM_MS 300
 
 typedef enum {
     SCR_HOME = 0, SCR_HOURLY, SCR_WIFI,

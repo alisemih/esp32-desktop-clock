@@ -1,0 +1,194 @@
+<!--
+  08 · SAAT VE TARİH — sistem saati ve takvimi.
+
+  Saat/dakika icin alarm ekraniyla ayni time_picker bileseni kullanilir.
+  Tarih icin uc ayri lv_roller: gun, ay (kisaltma) ve yil. Ay listesi
+  metin oldugu icin disp_18 fontu Turkce kapsamla uretilmistir.
+-->
+<screen name="time_date" permanent="true">
+	<view
+		flex_flow="column"
+		style_pad_top="26"
+		style_pad_bottom="20"
+		style_pad_left="44"
+		style_pad_right="44"
+		style_pad_row="12"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj
+				name="back"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="8"
+			>
+				<style name="plain" />
+				<lv_image src="ui_back" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+				<lv_label text="GERİ" style_text_font="mono_13" style_text_color="#text_2" style_text_letter_space="2" />
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_obj>
+			<lv_label
+				name="cancel"
+				text="İPTAL"
+				style_text_font="mono_13"
+				style_text_color="#text_3"
+				style_text_letter_space="2"
+			>
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_label>
+		</lv_obj>
+
+		<!-- baslik + otomatik saat anahtari -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj width="content" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="14">
+				<style name="plain" />
+				<lv_obj
+					width="40"
+					height="40"
+					flex_flow="row"
+					style_flex_main_place="center"
+					style_flex_cross_place="center"
+					style_flex_track_place="center"
+					style_bg_color="#bg_raised"
+					style_bg_opa="255"
+					style_radius="11"
+					style_border_color="#hairline"
+					style_border_opa="20"
+					style_border_width="1"
+				>
+					<lv_image src="ui_clock" style_image_recolor="#accent_warm" style_image_recolor_opa="255" />
+				</lv_obj>
+				<lv_obj width="content" height="content" flex_flow="column" style_pad_row="4">
+					<style name="plain" />
+					<lv_label text="Saat ve Tarih" style_text_font="disp_26" style_text_color="#text_1" />
+					<lv_label
+						text="SİSTEM SAATİNİ VE TAKVİMİ AYARLAYIN"
+						style_text_font="mono_12"
+						style_text_color="#text_3"
+						style_text_letter_space="2"
+					/>
+				</lv_obj>
+			</lv_obj>
+
+			<lv_obj width="content" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="12">
+				<style name="plain" />
+				<lv_label text="OTOMATİK" style_text_font="mono_13" style_text_color="#text_2" style_text_letter_space="2" />
+				<lv_switch name="auto_time" width="46" height="26" bind_checked="time_auto">
+					<style name="sw_track" />
+					<style name="sw_ind_off" selector="indicator" />
+					<style name="sw_ind_on" selector="indicator|checked" />
+					<style name="sw_knob" selector="knob" />
+					<style name="sw_knob_on" selector="knob|checked" />
+				</lv_switch>
+			</lv_obj>
+		</lv_obj>
+
+		<time_picker name="picker" hour="9" minute="42" />
+
+		<!-- tarih: gun / ay / yil -->
+		<lv_obj width="100%" height="content" flex_flow="column" style_pad_row="8">
+			<style name="plain" />
+			<lv_label text="TARİH" style_text_font="mono_12" style_text_color="#text_3" style_text_letter_space="2" />
+			<lv_obj
+				width="100%"
+				height="content"
+				flex_flow="row"
+				style_flex_main_place="space_between"
+				style_flex_cross_place="center"
+				style_pad_column="16"
+			>
+				<style name="plain" />
+				<lv_roller
+					name="day"
+					flex_grow="1"
+					visible_row_count="1"
+					options-mode="infinite"
+					selected="16"
+					options="01&#10;02&#10;03&#10;04&#10;05&#10;06&#10;07&#10;08&#10;09&#10;10&#10;11&#10;12&#10;13&#10;14&#10;15&#10;16&#10;17&#10;18&#10;19&#10;20&#10;21&#10;22&#10;23&#10;24&#10;25&#10;26&#10;27&#10;28&#10;29&#10;30&#10;31"
+				>
+					<style name="roller_main" selector="main" />
+					<style name="roller_date_sel" selector="selected" />
+				</lv_roller>
+				<lv_roller
+					name="month"
+					flex_grow="1"
+					visible_row_count="1"
+					options-mode="infinite"
+					selected="7"
+					options="OCA&#10;ŞUB&#10;MAR&#10;NİS&#10;MAY&#10;HAZ&#10;TEM&#10;AĞU&#10;EYL&#10;EKİ&#10;KAS&#10;ARA"
+				>
+					<style name="roller_main" selector="main" />
+					<style name="roller_date_sel" selector="selected" />
+				</lv_roller>
+				<lv_roller
+					name="year"
+					flex_grow="1"
+					visible_row_count="1"
+					options-mode="normal"
+					selected="2"
+					options="2024&#10;2025&#10;2026&#10;2027&#10;2028&#10;2029&#10;2030"
+				>
+					<style name="roller_main" selector="main" />
+					<style name="roller_date_sel" selector="selected" />
+				</lv_roller>
+			</lv_obj>
+		</lv_obj>
+
+		<lv_obj width="100%" height="1">
+			<style name="divider" />
+		</lv_obj>
+
+		<!-- 24 saat formati -->
+		<lv_obj
+			name="format_row"
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_cross_place="center"
+			style_pad_column="14"
+			style_pad_top="2"
+			style_pad_bottom="2"
+		>
+			<style name="plain" />
+			<lv_image src="ui_clock" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+			<lv_label text="24 Saat Formatı" flex_grow="1" style_text_font="mono_17" style_text_color="#text_1" />
+			<lv_switch name="fmt_24h" width="46" height="26" bind_checked="time_24h">
+				<style name="sw_track" />
+				<style name="sw_ind_off" selector="indicator" />
+				<style name="sw_ind_on" selector="indicator|checked" />
+				<style name="sw_knob" selector="knob" />
+				<style name="sw_knob_on" selector="knob|checked" />
+			</lv_switch>
+		</lv_obj>
+
+		<lv_button name="save" width="100%" height="44">
+			<style name="btn_primary" />
+			<lv_label
+				text="KAYDET"
+				align="center"
+				style_text_font="mono_15"
+				style_text_color="#bg_base"
+				style_text_letter_space="2"
+			/>
+			<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+		</lv_button>
+	</view>
+</screen>

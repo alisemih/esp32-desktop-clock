@@ -61,6 +61,7 @@ bool lvgl_ui_check_target(uint32_t target);
 #define TEXT_3 lv_color_hex(0x5A6672)
 #define ACCENT_WARM lv_color_hex(0xF4A65A)
 #define ACCENT_COOL lv_color_hex(0x6DC7E8)
+#define DIM_ROW lv_color_hex(0x39424C)
 #define HAIRLINE lv_color_hex(0xFFFFFF)
 #define PAD_EDGE 44
 #define RADIUS_CARD 18
@@ -84,7 +85,12 @@ bool lvgl_ui_check_target(uint32_t target);
  * Permanent screens
  *------------------*/
 
+extern lv_obj_t * alarm_set;
+extern lv_obj_t * location;
 extern lv_obj_t * main_screen;
+extern lv_obj_t * settings;
+extern lv_obj_t * time_date;
+extern lv_obj_t * wifi_list;
 extern lv_obj_t * wifi_password;
 
 /*----------------
@@ -118,6 +124,15 @@ extern lv_style_t sw_ind_off;
 extern lv_style_t sw_ind_on;
 extern lv_style_t sw_knob;
 extern lv_style_t sw_knob_on;
+extern lv_style_t roller_main;
+extern lv_style_t roller_sel;
+extern lv_style_t chip;
+extern lv_style_t chip_on;
+extern lv_style_t hub_card;
+extern lv_style_t search_field;
+extern lv_style_t row_active;
+extern lv_style_t btn_primary;
+extern lv_style_t roller_date_sel;
 
 /*----------------
  * Fonts
@@ -136,6 +151,10 @@ extern lv_font_t * mono_17;
 extern lv_font_t * mono_15;
 extern lv_font_t * mono_13;
 extern lv_font_t * mono_12;
+extern lv_font_t * disp_52;
+extern lv_font_t * disp_22;
+extern lv_font_t * disp_18;
+extern lv_font_t * mono_16;
 
 
 /*----------------
@@ -171,6 +190,17 @@ extern const void * ui_wifi_3;
 extern const void * ui_wifi_2;
 extern const void * ui_wifi_1;
 extern const void * ui_wifi_conn;
+extern const void * ui_bell;
+extern const void * ui_clock;
+extern const void * ui_speaker;
+extern const void * ui_pin;
+extern const void * ui_pin_lg;
+extern const void * ui_search;
+extern const void * ui_close;
+extern const void * ui_check;
+extern const void * ui_wifi_plain;
+extern const void * ui_gear;
+extern const void * ui_bell_lg;
 
 /*----------------
  * Subjects
@@ -190,6 +220,13 @@ extern lv_subject_t out_feels;
 extern lv_subject_t wifi_ssid;
 extern lv_subject_t wifi_enabled;
 extern lv_subject_t wifi_found;
+extern lv_subject_t alarm_sound;
+extern lv_subject_t alarm_enabled;
+extern lv_subject_t time_auto;
+extern lv_subject_t time_24h;
+extern lv_subject_t loc_auto;
+extern lv_subject_t loc_city;
+extern lv_subject_t loc_region;
 
 /**********************
  * GLOBAL PROTOTYPES
@@ -214,17 +251,25 @@ void lvgl_ui_init_gen(const char * asset_path);
  **********************/
 
 /*Include all the widgets, components and screens of this library*/
+#include "components/city_row_gen.h"
 #include "components/clock_full_gen.h"
+#include "components/day_chip_gen.h"
 #include "components/day_slot_gen.h"
 #include "components/forecast_row_gen.h"
 #include "components/home_main_gen.h"
 #include "components/hour_card_gen.h"
+#include "components/settings_card_gen.h"
 #include "components/stat_gauge_gen.h"
+#include "components/time_picker_gen.h"
 #include "components/weather_daily_gen.h"
 #include "components/weather_hourly_gen.h"
-#include "components/wifi_list_gen.h"
 #include "components/wifi_row_gen.h"
+#include "screens/alarm_set_gen.h"
+#include "screens/location_gen.h"
 #include "screens/main_screen_gen.h"
+#include "screens/settings_gen.h"
+#include "screens/time_date_gen.h"
+#include "screens/wifi_list_gen.h"
 #include "screens/wifi_password_gen.h"
 
 #ifdef __cplusplus

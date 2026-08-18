@@ -82,18 +82,6 @@ lv_obj_t * main_screen_create(void)
 
         weather_daily_create(col_weather);
 
-        lv_obj_t * col_wifi = lv_obj_create(lv_obj_0);
-        lv_obj_set_name(col_wifi, "col_wifi");
-        lv_obj_set_width(col_wifi, 800);
-        lv_obj_set_height(col_wifi, 480);
-        lv_obj_set_flex_flow(col_wifi, LV_FLEX_FLOW_COLUMN);
-        lv_obj_set_scroll_snap_y(col_wifi, LV_SCROLL_SNAP_CENTER);
-        lv_obj_set_flag(col_wifi, LV_OBJ_FLAG_SCROLL_ONE, true);
-        lv_obj_set_flag(col_wifi, LV_OBJ_FLAG_SCROLL_ELASTIC, false);
-        lv_obj_set_scrollbar_mode(col_wifi, LV_SCROLLBAR_MODE_OFF);
-        lv_obj_add_style(col_wifi, &page_col, 0);
-        wifi_list_create(col_wifi);
-
         the_root = lv_obj_0;
     }
     #endif

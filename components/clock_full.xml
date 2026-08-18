@@ -5,11 +5,34 @@
   lv_bar ile 0..59 araliginda ilerler; clock_second subject'i her saniye
   guncellenince cubuk kendiliginden akar.
 
-  Gecis: ekranin herhangi bir yeri -> home_main (move_bottom / yukari kaydirma)
+  Sag ustteki can ikonu alarm kurma ekranini acar.
 -->
 <component>
 	<view extends="lv_obj" width="800" height="480" flex_flow="column" style_flex_main_place="center" style_flex_cross_place="center" style_pad_row="26">
 		<style name="screen_root" />
+
+		<!--
+		  Can ikonu: ignore_layout="true" ile flex akisinin disinda kalir, boylece
+		  ortalanmis saat blogunu kaydirmadan sag ust koseye oturur.
+		-->
+		<lv_obj
+			name="btn_alarm"
+			align="top_right"
+			ignore_layout="true"
+			x="-36"
+			y="28"
+			width="44"
+			height="44"
+			flex_flow="row"
+			style_flex_main_place="center"
+			style_flex_cross_place="center"
+			style_flex_track_place="center"
+			style_bg_opa="0"
+			style_border_width="0"
+		>
+			<lv_image src="ui_bell_lg" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+			<screen_load_event screen="alarm_set" trigger="clicked" anim_type="move_top" duration="300" />
+		</lv_obj>
 
 		<lv_label
 			name="clock"

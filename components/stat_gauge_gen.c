@@ -56,6 +56,7 @@ lv_obj_t * stat_gauge_create(lv_obj_t * parent, int32_t value, int32_t min_value
         lv_arc_set_value(dial, value);
         lv_arc_set_bg_start_angle(dial, 135);
         lv_arc_set_bg_end_angle(dial, 45);
+        lv_obj_set_flag(dial, LV_OBJ_FLAG_CLICKABLE, false);
         lv_obj_set_style_arc_color(dial, accent, LV_PART_INDICATOR);
         lv_obj_set_style_arc_width(dial, 12, LV_PART_INDICATOR);
         lv_obj_set_style_arc_rounded(dial, true, LV_PART_INDICATOR);

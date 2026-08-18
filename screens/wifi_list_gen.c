@@ -30,7 +30,7 @@
  *   GLOBAL FUNCTIONS
  **********************/
 
-lv_obj_t * wifi_list_create(lv_obj_t * parent)
+lv_obj_t * wifi_list_create(void)
 {
     LV_TRACE_OBJ_CREATE("begin");
 
@@ -39,10 +39,9 @@ lv_obj_t * wifi_list_create(lv_obj_t * parent)
 
     #if LVGL_UI_CHECK_COMPILE_TARGET(LVGL_UI_TARGET_ALL)
     if (lvgl_ui_check_target(LVGL_UI_TARGET_ALL)) {
-        lv_obj_t * lv_obj_0 = lv_obj_create(parent);
+        if (wifi_list == NULL) wifi_list = lv_obj_create(NULL);
+        lv_obj_t * lv_obj_0 = wifi_list;
         lv_obj_set_name_static(lv_obj_0, "wifi_list_#");
-        lv_obj_set_width(lv_obj_0, 800);
-        lv_obj_set_height(lv_obj_0, 480);
         lv_obj_set_flex_flow(lv_obj_0, LV_FLEX_FLOW_COLUMN);
         lv_obj_set_style_pad_top(lv_obj_0, 32, 0);
         lv_obj_set_style_pad_bottom(lv_obj_0, 26, 0);
@@ -79,6 +78,8 @@ lv_obj_t * wifi_list_create(lv_obj_t * parent)
         lv_obj_set_style_text_font(lv_label_0, mono_15, 0);
         lv_obj_set_style_text_color(lv_label_0, TEXT_2, 0);
         lv_obj_set_style_text_letter_space(lv_label_0, 3, 0);
+
+        lv_obj_add_screen_load_event(back_weather, LV_EVENT_CLICKED, main_screen, LV_SCREEN_LOAD_ANIM_MOVE_BOTTOM, 300, 0);
 
         lv_obj_t * lv_obj_3 = lv_obj_create(lv_obj_1);
         lv_obj_set_width(lv_obj_3, LV_SIZE_CONTENT);
@@ -201,6 +202,32 @@ lv_obj_t * wifi_list_create(lv_obj_t * parent)
         lv_obj_add_style(lv_obj_11, &divider, 0);
 
         wifi_row_create(lv_obj_8, ui_wifi_1, "Misafir", "AÇIK AĞ · ŞİFRESİZ", lv_color_hex(0x5A6672), 0, 255, "", 0);
+
+        lv_obj_t * lv_obj_12 = lv_obj_create(lv_obj_8);
+        lv_obj_set_width(lv_obj_12, lv_pct(100));
+        lv_obj_set_height(lv_obj_12, 1);
+        lv_obj_add_style(lv_obj_12, &divider, 0);
+
+        wifi_row_create(lv_obj_8, ui_wifi_2, "Superonline_Fiber", "GÜVENLİ · WPA2", lv_color_hex(0x5A6672), 255, 255, "", 0);
+
+        lv_obj_t * lv_obj_13 = lv_obj_create(lv_obj_8);
+        lv_obj_set_width(lv_obj_13, lv_pct(100));
+        lv_obj_set_height(lv_obj_13, 1);
+        lv_obj_add_style(lv_obj_13, &divider, 0);
+
+        wifi_row_create(lv_obj_8, ui_wifi_2, "Superonline_Fiber", "GÜVENLİ · WPA2", lv_color_hex(0x5A6672), 255, 255, "", 0);
+
+        lv_obj_t * lv_obj_14 = lv_obj_create(lv_obj_8);
+        lv_obj_set_width(lv_obj_14, lv_pct(100));
+        lv_obj_set_height(lv_obj_14, 1);
+        lv_obj_add_style(lv_obj_14, &divider, 0);
+
+        wifi_row_create(lv_obj_8, ui_wifi_2, "Superonline_Fiber", "GÜVENLİ · WPA2", lv_color_hex(0x5A6672), 255, 255, "", 0);
+
+        lv_obj_t * lv_obj_15 = lv_obj_create(lv_obj_8);
+        lv_obj_set_width(lv_obj_15, lv_pct(100));
+        lv_obj_set_height(lv_obj_15, 1);
+        lv_obj_add_style(lv_obj_15, &divider, 0);
 
         the_root = lv_obj_0;
     }

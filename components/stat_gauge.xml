@@ -28,6 +28,7 @@
 			value="$value"
 			bg_start_angle="135"
 			bg_end_angle="45"
+			clickable="false"
 			style_arc_color-indicator="$accent"
 			style_arc_width-indicator="12"
 			style_arc_rounded-indicator="true"

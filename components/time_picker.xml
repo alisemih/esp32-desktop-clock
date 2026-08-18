@@ -1,0 +1,62 @@
+<!--
+  time_picker — saat:dakika secici (alarm ve saat/tarih ekranlarinda ortak).
+
+  Tasarimdaki "ustte ve altta sonuk komsu degerler, ortada vurgulu kutu"
+  gorunumu lv_roller'in tam karsiligi. Roller'in iki parcasi kullanilir:
+    main     -> sonuk satirlar (Fraunces 22)
+    selected -> ortadaki vurgulu bant (Fraunces 52)
+  options-mode="infinite" ile 23'ten 00'a sarar.
+-->
+<component>
+	<api>
+		<prop name="hour" type="int" default="7" />
+		<prop name="minute" type="int" default="30" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		width="100%"
+		height="content"
+		flex_flow="row"
+		style_flex_main_place="center"
+		style_flex_cross_place="center"
+		style_pad_column="10"
+	>
+		<style name="plain" />
+
+		<lv_obj width="content" height="content" flex_flow="column" style_flex_cross_place="center" style_pad_row="10">
+			<style name="plain" />
+			<lv_roller
+				name="alarm_hour"
+				width="152"
+				visible_row_count="3"
+				options-mode="infinite"
+				selected="$hour"
+				options="00&#10;01&#10;02&#10;03&#10;04&#10;05&#10;06&#10;07&#10;08&#10;09&#10;10&#10;11&#10;12&#10;13&#10;14&#10;15&#10;16&#10;17&#10;18&#10;19&#10;20&#10;21&#10;22&#10;23"
+			>
+				<style name="roller_main" selector="main" />
+				<style name="roller_sel" selector="selected" />
+			</lv_roller>
+			<lv_label text="SAAT" style_text_font="mono_12" style_text_color="#text_3" style_text_letter_space="2" />
+		</lv_obj>
+
+		<!-- Iki nokta: etiketler asagida oldugu icin optik olarak yukari cekilir -->
+		<lv_label text=":" style_text_font="disp_52" style_text_color="#dim_row" style_pad_bottom="30" />
+
+		<lv_obj width="content" height="content" flex_flow="column" style_flex_cross_place="center" style_pad_row="10">
+			<style name="plain" />
+			<lv_roller
+				name="alarm_minute"
+				width="152"
+				visible_row_count="3"
+				options-mode="infinite"
+				selected="$minute"
+				options="00&#10;01&#10;02&#10;03&#10;04&#10;05&#10;06&#10;07&#10;08&#10;09&#10;10&#10;11&#10;12&#10;13&#10;14&#10;15&#10;16&#10;17&#10;18&#10;19&#10;20&#10;21&#10;22&#10;23&#10;24&#10;25&#10;26&#10;27&#10;28&#10;29&#10;30&#10;31&#10;32&#10;33&#10;34&#10;35&#10;36&#10;37&#10;38&#10;39&#10;40&#10;41&#10;42&#10;43&#10;44&#10;45&#10;46&#10;47&#10;48&#10;49&#10;50&#10;51&#10;52&#10;53&#10;54&#10;55&#10;56&#10;57&#10;58&#10;59"
+			>
+				<style name="roller_main" selector="main" />
+				<style name="roller_sel" selector="selected" />
+			</lv_roller>
+			<lv_label text="DAKİKA" style_text_font="mono_12" style_text_color="#text_3" style_text_letter_space="2" />
+		</lv_obj>
+	</view>
+</component>

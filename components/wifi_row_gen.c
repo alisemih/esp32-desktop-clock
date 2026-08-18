@@ -50,7 +50,7 @@ lv_obj_t * wifi_row_create(lv_obj_t * parent, const void * icon, const char * ss
         lv_obj_set_style_pad_right(lv_obj_0, 8, 0);
 
         lv_obj_add_subject_set_string_event(lv_obj_0, &wifi_ssid, LV_EVENT_CLICKED, ssid);
-        lv_obj_add_screen_load_event(lv_obj_0, LV_EVENT_CLICKED, wifi_password, LV_SCREEN_LOAD_ANIM_MOVE_TOP, 500, 0);
+        lv_obj_add_screen_load_event(lv_obj_0, LV_EVENT_CLICKED, wifi_password, LV_SCREEN_LOAD_ANIM_MOVE_TOP, 300, 0);
         lv_obj_add_style(lv_obj_0, &plain, 0);
         lv_obj_t * signal = lv_image_create(lv_obj_0);
         lv_obj_set_name(signal, "signal");

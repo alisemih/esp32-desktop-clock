@@ -18,6 +18,7 @@
 		<!-- Anlamli aksanlar: warm = sicaklik/gunes, cool = nem/serinlik -->
 		<color name="accent_warm" value="0xF4A65A" />
 		<color name="accent_cool" value="0x6DC7E8" />
+		<color name="dim_row" value="0x39424C" />
 		<color name="hairline" value="0xFFFFFF" />
 
 		<!-- Olcu birimleri -->
@@ -26,6 +27,210 @@
 		<px name="radius_strip" value="22" />
 		<int name="anim_ms" value="500" />
 	</consts>
+
+	<fonts>
+		<!--
+          Dev saat/sicaklik rakamlari: yalnizca rakam + iki nokta + derece uretilir.
+          232 px gibi bir boyutta bile tum alfabe yerine 12 glif gomuldugu icin
+          flash maliyeti kucuk kalir.
+        -->
+		<bin
+			name="disp_232"
+			src_path="fonts/Fraunces_72pt-Black.ttf"
+			size="232"
+			bpp="4"
+			as_file="false"
+			range="0x30-0x3A"
+		/>
+		<bin
+			name="disp_142"
+			src_path="fonts/Fraunces_72pt-Black.ttf"
+			size="142"
+			bpp="4"
+			as_file="false"
+			range="0x30-0x3A"
+		/>
+		<bin
+			name="disp_112"
+			src_path="fonts/Fraunces_72pt-Black.ttf"
+			size="112"
+			bpp="4"
+			as_file="false"
+			range="0x30-0x39"
+			symbols="°"
+		/>
+
+		<!--
+          Baslik serifi ve arayuz monosu tam Turkce kapsamiyla:
+          ASCII + Latin-1 (ÇÖÜçöü) + Ğğ + İı + Şş, arti kullanilan isaretler.
+        -->
+		<bin
+			name="disp_44"
+			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
+			size="44"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+		/>
+		<bin
+			name="disp_26"
+			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
+			size="26"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+		/>
+
+		<bin
+			name="mono_34"
+			src_path="fonts/IBMPlexMono-SemiBold.ttf"
+			size="34"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="°"
+		/>
+		<bin
+			name="mono_26"
+			src_path="fonts/IBMPlexMono-Medium.ttf"
+			size="26"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="•"
+		/>
+		<bin
+			name="mono_19"
+			src_path="fonts/IBMPlexMono-SemiBold.ttf"
+			size="19"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="°↑↓"
+		/>
+		<bin
+			name="mono_17"
+			src_path="fonts/IBMPlexMono-Medium.ttf"
+			size="17"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="°·"
+		/>
+		<bin
+			name="mono_15"
+			src_path="fonts/IBMPlexMono-SemiBold.ttf"
+			size="15"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="°·↑↓"
+		/>
+		<bin
+			name="mono_13"
+			src_path="fonts/IBMPlexMono-SemiBold.ttf"
+			size="13"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="·–"
+		/>
+		<bin
+			name="mono_12"
+			src_path="fonts/IBMPlexMono-SemiBold.ttf"
+			size="12"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+			symbols="·"
+		/>
+
+		<!-- Saat/dakika secicileri: yalnizca rakam + iki nokta -->
+		<bin
+			name="disp_52"
+			src_path="fonts/Fraunces_72pt-Black.ttf"
+			size="52"
+			bpp="4"
+			as_file="false"
+			range="0x30-0x3A"
+		/>
+		<bin
+			name="disp_22"
+			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
+			size="22"
+			bpp="4"
+			as_file="false"
+			range="0x30-0x3A"
+		/>
+		<!-- Tarih kutulari: harf de gerekiyor (AĞU, OCA...) -->
+		<bin
+			name="disp_18"
+			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
+			size="18"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+		/>
+		<bin
+			name="mono_16"
+			src_path="fonts/IBMPlexMono-Medium.ttf"
+			size="16"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
+		/>
+	</fonts>
+
+	<images>
+		<!-- Hava ikonlari: cok renkli, oldugu gibi cizilir -->
+		<data name="wx_sun_104" color_format="argb8888" src_path="images/wx_sun_104.png" />
+		<data name="wx_partly_104" color_format="argb8888" src_path="images/wx_partly_104.png" />
+		<data name="wx_cloud_104" color_format="argb8888" src_path="images/wx_cloud_104.png" />
+		<data name="wx_rain_104" color_format="argb8888" src_path="images/wx_rain_104.png" />
+		<data name="wx_moon_104" color_format="argb8888" src_path="images/wx_moon_104.png" />
+
+		<data name="wx_sun_46" color_format="argb8888" src_path="images/wx_sun_46.png" />
+		<data name="wx_partly_46" color_format="argb8888" src_path="images/wx_partly_46.png" />
+		<data name="wx_cloud_46" color_format="argb8888" src_path="images/wx_cloud_46.png" />
+		<data name="wx_rain_46" color_format="argb8888" src_path="images/wx_rain_46.png" />
+		<data name="wx_moon_46" color_format="argb8888" src_path="images/wx_moon_46.png" />
+
+		<data name="wx_sun_34" color_format="argb8888" src_path="images/wx_sun_34.png" />
+		<data name="wx_partly_34" color_format="argb8888" src_path="images/wx_partly_34.png" />
+		<data name="wx_cloud_34" color_format="argb8888" src_path="images/wx_cloud_34.png" />
+		<data name="wx_rain_34" color_format="argb8888" src_path="images/wx_rain_34.png" />
+		<data name="wx_moon_34" color_format="argb8888" src_path="images/wx_moon_34.png" />
+
+		<!-- Arayuz ikonlari: beyaz uretildi, style_image_recolor ile boyanir -->
+		<data name="ui_lock" color_format="argb8888" src_path="images/ui_lock.png" />
+		<data name="ui_lock_lg" color_format="argb8888" src_path="images/ui_lock_lg.png" />
+		<data name="ui_chevron" color_format="argb8888" src_path="images/ui_chevron.png" />
+		<data name="ui_chevdown" color_format="argb8888" src_path="images/ui_chevdown.png" />
+		<data name="ui_back" color_format="argb8888" src_path="images/ui_back.png" />
+		<data name="ui_eye" color_format="argb8888" src_path="images/ui_eye.png" />
+		<data name="ui_refresh" color_format="argb8888" src_path="images/ui_refresh.png" />
+		<data name="ui_shift" color_format="argb8888" src_path="images/ui_shift.png" />
+		<data name="ui_backspace" color_format="argb8888" src_path="images/ui_backspace.png" />
+
+		<!-- Wi-Fi sinyal seviyeleri: pasif yaylar zaten soluk cizili -->
+		<data name="ui_wifi_3" color_format="argb8888" src_path="images/ui_wifi_3.png" />
+		<data name="ui_wifi_2" color_format="argb8888" src_path="images/ui_wifi_2.png" />
+		<data name="ui_wifi_1" color_format="argb8888" src_path="images/ui_wifi_1.png" />
+		<data name="ui_wifi_conn" color_format="argb8888" src_path="images/ui_wifi_conn.png" />
+
+		<!-- Ayarlar / alarm / konum ekranlari icin arayuz ikonlari (beyaz, recolor ile boyanir) -->
+		<data name="ui_bell" color_format="argb8888" src_path="images/ui_bell.png" />
+		<data name="ui_clock" color_format="argb8888" src_path="images/ui_clock.png" />
+		<data name="ui_speaker" color_format="argb8888" src_path="images/ui_speaker.png" />
+		<data name="ui_pin" color_format="argb8888" src_path="images/ui_pin.png" />
+		<data name="ui_pin_lg" color_format="argb8888" src_path="images/ui_pin_lg.png" />
+		<data name="ui_search" color_format="argb8888" src_path="images/ui_search.png" />
+		<data name="ui_close" color_format="argb8888" src_path="images/ui_close.png" />
+		<data name="ui_check" color_format="argb8888" src_path="images/ui_check.png" />
+		<data name="ui_wifi_plain" color_format="argb8888" src_path="images/ui_wifi_plain.png" />
+		<data name="ui_gear" color_format="argb8888" src_path="images/ui_gear.png" />
+		<data name="ui_bell_lg" color_format="argb8888" src_path="images/ui_bell_lg.png" />
+	</images>
 
 	<styles>
 		<!-- Her ekranin ortak zemini -->
@@ -211,6 +416,108 @@
 		/>
 		<!-- acikken tutamak koyu: amber hapta delik etkisi -->
 		<style name="sw_knob_on" bg_color="#bg_base" />
+
+		<!--
+		  Saat secici (lv_roller). Tasarimda secili satir Fraunces 52, sonuk
+		  komsular Fraunces 22. Roller'in iki parcasi bunu birebir karsilar:
+		    main     -> sonuk satirlar
+		    selected -> ortadaki vurgulu bant
+		  text_line_space yalnizca satir araligini degil, vurgulu bandin
+		  yuksekligini de belirler.
+		-->
+		<style
+			name="roller_main"
+			bg_opa="0"
+			border_width="0"
+			pad_all="0"
+			text_font="mono_34"
+			text_color="#dim_row"
+			text_line_space="26"
+			text_align="center"
+		/>
+		<style
+			name="roller_sel"
+			bg_color="#bg_well"
+			bg_opa="255"
+			radius="12"
+			border_color="#hairline"
+			border_opa="26"
+			border_width="0"
+			text_font="mono_34"
+			text_color="#text_1"
+		/>
+
+		<!-- Tekrar gunleri: yuvarlak rozet, aktifken amber dolgu -->
+		<style
+			name="chip"
+			bg_color="#bg_well"
+			bg_opa="255"
+			radius="20"
+			border_color="#hairline"
+			border_opa="20"
+			border_width="1"
+			text_font="mono_12"
+			text_color="#text_3"
+			text_letter_space="1"
+		/>
+		<style name="chip_on" bg_color="#accent_warm" bg_opa="255" border_width="0" text_color="#bg_base" />
+
+		<!-- Ayarlar kartlari (hub) -->
+		<style
+			name="hub_card"
+			bg_color="#bg_raised"
+			bg_opa="255"
+			radius="18"
+			border_color="#hairline"
+			border_opa="20"
+			border_width="1"
+			pad_left="20"
+			pad_right="20"
+			pad_top="16"
+			pad_bottom="16"
+		/>
+
+		<!-- Arama alani: amber odak halkasi -->
+		<style
+			name="search_field"
+			bg_color="#bg_inset"
+			bg_opa="255"
+			radius="14"
+			border_color="#accent_warm"
+			border_opa="255"
+			border_width="2"
+			text_font="mono_16"
+			text_color="#text_1"
+			pad_left="14"
+			pad_right="14"
+		/>
+
+		<!-- Listede secili satir: amber zemin + sol ray -->
+		<style name="row_active" bg_color="#accent_warm" bg_opa="36" radius="14" border_width="0" />
+
+		<!-- Alt aksiyon cubugu (KAYDET) -->
+		<style
+			name="btn_primary"
+			bg_color="#accent_warm"
+			bg_opa="255"
+			radius="12"
+			border_width="0"
+			text_font="mono_15"
+			text_color="#bg_base"
+			text_letter_space="2"
+		/>
+		<!-- Tarih kutulari: ayni roller, daha kucuk font -->
+		<style
+			name="roller_date_sel"
+			bg_color="#bg_well"
+			bg_opa="255"
+			radius="10"
+			border_color="#hairline"
+			border_opa="26"
+			border_width="1"
+			text_font="disp_18"
+			text_color="#text_1"
+		/>
 	</styles>
 
 	<subjects>
@@ -235,161 +542,14 @@
 		<string name="wifi_ssid" value="Yılmaz_Ev" />
 		<int name="wifi_enabled" value="1" />
 		<int name="wifi_found" value="6" />
+
+		<!-- Alarm / saat-tarih / konum ekranlari -->
+		<string name="alarm_sound" value="Klasik Çan" />
+		<int name="alarm_enabled" value="1" />
+		<int name="time_auto" value="0" />
+		<int name="time_24h" value="1" />
+		<int name="loc_auto" value="0" />
+		<string name="loc_city" value="İstanbul" />
+		<string name="loc_region" value="Marmara Bölgesi" />
 	</subjects>
-
-	<images>
-		<!-- Hava ikonlari: cok renkli, oldugu gibi cizilir -->
-		<data name="wx_sun_104" color_format="argb8888" src_path="images/wx_sun_104.png" />
-		<data name="wx_partly_104" color_format="argb8888" src_path="images/wx_partly_104.png" />
-		<data name="wx_cloud_104" color_format="argb8888" src_path="images/wx_cloud_104.png" />
-		<data name="wx_rain_104" color_format="argb8888" src_path="images/wx_rain_104.png" />
-		<data name="wx_moon_104" color_format="argb8888" src_path="images/wx_moon_104.png" />
-
-		<data name="wx_sun_46" color_format="argb8888" src_path="images/wx_sun_46.png" />
-		<data name="wx_partly_46" color_format="argb8888" src_path="images/wx_partly_46.png" />
-		<data name="wx_cloud_46" color_format="argb8888" src_path="images/wx_cloud_46.png" />
-		<data name="wx_rain_46" color_format="argb8888" src_path="images/wx_rain_46.png" />
-		<data name="wx_moon_46" color_format="argb8888" src_path="images/wx_moon_46.png" />
-
-		<data name="wx_sun_34" color_format="argb8888" src_path="images/wx_sun_34.png" />
-		<data name="wx_partly_34" color_format="argb8888" src_path="images/wx_partly_34.png" />
-		<data name="wx_cloud_34" color_format="argb8888" src_path="images/wx_cloud_34.png" />
-		<data name="wx_rain_34" color_format="argb8888" src_path="images/wx_rain_34.png" />
-		<data name="wx_moon_34" color_format="argb8888" src_path="images/wx_moon_34.png" />
-
-		<!-- Arayuz ikonlari: beyaz uretildi, style_image_recolor ile boyanir -->
-		<data name="ui_lock" color_format="argb8888" src_path="images/ui_lock.png" />
-		<data name="ui_lock_lg" color_format="argb8888" src_path="images/ui_lock_lg.png" />
-		<data name="ui_chevron" color_format="argb8888" src_path="images/ui_chevron.png" />
-		<data name="ui_chevdown" color_format="argb8888" src_path="images/ui_chevdown.png" />
-		<data name="ui_back" color_format="argb8888" src_path="images/ui_back.png" />
-		<data name="ui_eye" color_format="argb8888" src_path="images/ui_eye.png" />
-		<data name="ui_refresh" color_format="argb8888" src_path="images/ui_refresh.png" />
-		<data name="ui_shift" color_format="argb8888" src_path="images/ui_shift.png" />
-		<data name="ui_backspace" color_format="argb8888" src_path="images/ui_backspace.png" />
-
-		<!-- Wi-Fi sinyal seviyeleri: pasif yaylar zaten soluk cizili -->
-		<data name="ui_wifi_3" color_format="argb8888" src_path="images/ui_wifi_3.png" />
-		<data name="ui_wifi_2" color_format="argb8888" src_path="images/ui_wifi_2.png" />
-		<data name="ui_wifi_1" color_format="argb8888" src_path="images/ui_wifi_1.png" />
-		<data name="ui_wifi_conn" color_format="argb8888" src_path="images/ui_wifi_conn.png" />
-	</images>
-
-	<fonts>
-		<!--
-          Dev saat/sicaklik rakamlari: yalnizca rakam + iki nokta + derece uretilir.
-          232 px gibi bir boyutta bile tum alfabe yerine 12 glif gomuldugu icin
-          flash maliyeti kucuk kalir.
-        -->
-		<bin
-			name="disp_232"
-			src_path="fonts/Fraunces_72pt-Black.ttf"
-			size="232"
-			bpp="4"
-			as_file="false"
-			range="0x30-0x3A"
-		/>
-		<bin
-			name="disp_142"
-			src_path="fonts/Fraunces_72pt-Black.ttf"
-			size="142"
-			bpp="4"
-			as_file="false"
-			range="0x30-0x3A"
-		/>
-		<bin
-			name="disp_112"
-			src_path="fonts/Fraunces_72pt-Black.ttf"
-			size="112"
-			bpp="4"
-			as_file="false"
-			range="0x30-0x39"
-			symbols="°"
-		/>
-
-		<!--
-          Baslik serifi ve arayuz monosu tam Turkce kapsamiyla:
-          ASCII + Latin-1 (ÇÖÜçöü) + Ğğ + İı + Şş, arti kullanilan isaretler.
-        -->
-		<bin
-			name="disp_44"
-			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
-			size="44"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-		/>
-		<bin
-			name="disp_26"
-			src_path="fonts/Fraunces_72pt-SemiBold.ttf"
-			size="26"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-		/>
-
-		<bin
-			name="mono_34"
-			src_path="fonts/IBMPlexMono-SemiBold.ttf"
-			size="34"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="°"
-		/>
-		<bin
-			name="mono_26"
-			src_path="fonts/IBMPlexMono-Medium.ttf"
-			size="26"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="•"
-		/>
-		<bin
-			name="mono_19"
-			src_path="fonts/IBMPlexMono-SemiBold.ttf"
-			size="19"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="°↑↓"
-		/>
-		<bin
-			name="mono_17"
-			src_path="fonts/IBMPlexMono-Medium.ttf"
-			size="17"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="°·"
-		/>
-		<bin
-			name="mono_15"
-			src_path="fonts/IBMPlexMono-SemiBold.ttf"
-			size="15"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="°·↑↓"
-		/>
-		<bin
-			name="mono_13"
-			src_path="fonts/IBMPlexMono-SemiBold.ttf"
-			size="13"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="·–"
-		/>
-		<bin
-			name="mono_12"
-			src_path="fonts/IBMPlexMono-SemiBold.ttf"
-			size="12"
-			bpp="4"
-			as_file="false"
-			range="0x20-0x7F,0xC0-0xFF,0x11E-0x11F,0x130-0x131,0x15E-0x15F"
-			symbols="·"
-		/>
-	</fonts>
 </globals>

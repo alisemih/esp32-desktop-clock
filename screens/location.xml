@@ -1,0 +1,137 @@
+<!--
+  09 · KONUM SEÇİMİ — sehir arama ve secme.
+
+  Arama alani gercek bir lv_textarea; solundaki buyutec ve sagindaki temizle
+  dugmesi ayni kabin icinde durur, boylece amber odak halkasi ucunu da kapsar.
+  Secili sehir kullanim yerinde row_active stili ve check_opa ile isaretlenir.
+-->
+<screen name="location" permanent="true">
+	<view
+		flex_flow="column"
+		style_pad_top="32"
+		style_pad_bottom="20"
+		style_pad_left="44"
+		style_pad_right="44"
+		style_pad_row="12"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj
+				name="back"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="10"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="7"
+					height="7"
+					style_radius="4"
+					style_bg_color="#accent_cool"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="AYARLAR · KONUM"
+					style_text_font="mono_15"
+					style_text_color="#text_2"
+					style_text_letter_space="3"
+				/>
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_obj>
+
+			<lv_obj width="content" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="12">
+				<style name="plain" />
+				<lv_label text="OTOMATİK" style_text_font="mono_13" style_text_color="#text_2" style_text_letter_space="2" />
+				<lv_switch name="auto_loc" width="46" height="26" bind_checked="loc_auto">
+					<style name="sw_track" />
+					<style name="sw_ind_off" selector="indicator" />
+					<style name="sw_ind_on" selector="indicator|checked" />
+					<style name="sw_knob" selector="knob" />
+					<style name="sw_knob_on" selector="knob|checked" />
+				</lv_switch>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- baslik -->
+		<lv_obj width="content" height="content" flex_flow="column" style_pad_row="6">
+			<style name="plain" />
+			<lv_label text="Şehir Seç" style_text_font="disp_44" style_text_color="#text_1" />
+			<lv_obj width="content" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="9">
+				<style name="plain" />
+				<lv_obj
+					width="6"
+					height="6"
+					style_radius="3"
+					style_bg_color="#accent_cool"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="81 İL BULUNDU · İSTANBUL SEÇİLİ"
+					style_text_font="mono_13"
+					style_text_color="#text_3"
+					style_text_letter_space="2"
+				/>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- arama alani -->
+		<lv_obj
+			name="search_box"
+			width="100%"
+			height="48"
+			flex_flow="row"
+			style_flex_cross_place="center"
+			style_pad_column="12"
+		>
+			<style name="search_field" />
+			<lv_image src="ui_search" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+			<lv_textarea
+				name="search"
+				flex_grow="1"
+				one_line="true"
+				placeholder_text="Şehir ara"
+				text="İstanbul"
+				style_bg_opa="0"
+				style_border_width="0"
+				style_pad_all="0"
+				style_text_font="mono_16"
+				style_text_color="#text_1"
+			/>
+			<lv_image name="clear" src="ui_close" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+		</lv_obj>
+
+		<!-- sehir listesi -->
+		<lv_obj width="100%" flex_grow="1" flex_flow="column" style_pad_row="0">
+			<style name="plain" />
+
+			<city_row
+				name="city_selected"
+				city="İstanbul"
+				region="· Marmara Bölgesi"
+				accent="#accent_warm"
+				check_opa="255"
+				style_bg_color="#accent_warm"
+				style_bg_opa="36"
+				style_radius="14"
+			/>
+			<city_row city="Ankara" region="· İç Anadolu Bölgesi" />
+			<city_row city="İzmir" region="· Ege Bölgesi" />
+			<city_row city="Bursa" region="· Marmara Bölgesi" />
+			<city_row city="Antalya" region="· Akdeniz Bölgesi" />
+			<city_row city="Adana" region="· Akdeniz Bölgesi" />
+		</lv_obj>
+	</view>
+</screen>

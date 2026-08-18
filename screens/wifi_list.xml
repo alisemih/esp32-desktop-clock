@@ -8,11 +8,8 @@
     ust bar etiketi -> weather_hourly (move_right / saga kaydirma)
     Yılmaz_Ev satiri-> wifi_password  (move_top   / detaya inis)
 -->
-<component>
+<screen name="wifi_list" permanent="true">
 	<view
-		extends="lv_obj"
-		width="800"
-		height="480"
 		flex_flow="column"
 		style_pad_top="32"
 		style_pad_bottom="26"
@@ -55,6 +52,7 @@
 					style_text_color="#text_2"
 					style_text_letter_space="3"
 				/>
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
 			</lv_obj>
 
 			<lv_obj
@@ -187,6 +185,21 @@
 
 			<!-- acik ag: kilit yok -->
 			<wifi_row icon="ui_wifi_1" ssid="Misafir" meta="AÇIK AĞ · ŞİFRESİZ" lock_opa="0" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+			<wifi_row icon="ui_wifi_2" ssid="Superonline_Fiber" meta="GÜVENLİ · WPA2" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+			<wifi_row icon="ui_wifi_2" ssid="Superonline_Fiber" meta="GÜVENLİ · WPA2" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
+			<wifi_row icon="ui_wifi_2" ssid="Superonline_Fiber" meta="GÜVENLİ · WPA2" />
+			<lv_obj width="100%" height="1">
+				<style name="divider" />
+			</lv_obj>
 		</lv_obj>
 	</view>
-</component>
+</screen>

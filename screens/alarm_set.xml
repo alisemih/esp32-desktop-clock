@@ -1,0 +1,220 @@
+<!--
+  07 · YENİ ALARM — saat secimi, tekrar gunleri ve alarm sesi.
+
+  Saat secici lv_roller kullanir (bkz. time_picker bileseni). Tekrar
+  gunlerinden aktif olanlar kullanim yerinde yerel stille amber yapilir;
+  day_chip bileseninin kendisi notr kalir — hour_card'daki "ŞİMDİ" karti
+  ile ayni yaklasim.
+-->
+<screen name="alarm_set" permanent="true">
+	<view
+		flex_flow="column"
+		style_pad_top="26"
+		style_pad_bottom="20"
+		style_pad_left="44"
+		style_pad_right="44"
+		style_pad_row="12"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj
+				name="back"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="8"
+			>
+				<style name="plain" />
+				<lv_image src="ui_back" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+				<lv_label
+					text="GERİ"
+					style_text_font="mono_13"
+					style_text_color="#text_2"
+					style_text_letter_space="2"
+				/>
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_obj>
+			<lv_label
+				name="cancel"
+				text="İPTAL"
+				style_text_font="mono_13"
+				style_text_color="#text_3"
+				style_text_letter_space="2"
+			>
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_label>
+		</lv_obj>
+
+		<!-- baslik + aktiflik anahtari -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="14"
+			>
+				<style name="plain" />
+				<lv_obj
+					width="40"
+					height="40"
+					flex_flow="row"
+					style_flex_main_place="center"
+					style_flex_cross_place="center"
+					style_flex_track_place="center"
+					style_bg_color="#bg_raised"
+					style_bg_opa="255"
+					style_radius="11"
+					style_border_color="#hairline"
+					style_border_opa="20"
+					style_border_width="1"
+				>
+					<lv_image src="ui_bell" style_image_recolor="#accent_warm" style_image_recolor_opa="255" />
+				</lv_obj>
+				<lv_obj width="content" height="content" flex_flow="column" style_pad_row="4">
+					<style name="plain" />
+					<lv_label text="Yeni Alarm" style_text_font="disp_26" style_text_color="#text_1" />
+					<lv_label
+						text="ZAMANI VE TEKRAR GÜNLERİNİ SEÇİN"
+						style_text_font="mono_12"
+						style_text_color="#text_3"
+						style_text_letter_space="2"
+					/>
+				</lv_obj>
+			</lv_obj>
+
+			<lv_obj
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="12"
+			>
+				<style name="plain" />
+				<lv_label
+					text="AKTİF"
+					style_text_font="mono_13"
+					style_text_color="#text_2"
+					style_text_letter_space="2"
+				/>
+				<lv_switch name="alarm_on" width="46" height="26" bind_checked="alarm_enabled">
+					<style name="sw_track" />
+					<style name="sw_ind_off" selector="indicator" />
+					<style name="sw_ind_on" selector="indicator|checked" />
+					<style name="sw_knob" selector="knob" />
+					<style name="sw_knob_on" selector="knob|checked" />
+				</lv_switch>
+			</lv_obj>
+		</lv_obj>
+
+		<time_picker name="picker" hour="7" minute="30" />
+
+		<!-- tekrar gunleri: aktif olanlar yerel stille amber -->
+		<lv_obj width="100%" height="content" flex_flow="column" style_pad_row="10">
+			<style name="plain" />
+			<lv_label
+				text="TEKRARLA"
+				style_text_font="mono_12"
+				style_text_color="#text_3"
+				style_text_letter_space="2"
+			/>
+			<lv_obj
+				width="100%"
+				height="content"
+				flex_flow="row"
+				style_flex_main_place="space_between"
+				style_flex_cross_place="center"
+			>
+				<style name="plain" />
+				<day_chip
+					label="PZT"
+					label_color="#bg_base"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<day_chip
+					label="SAL"
+					label_color="#bg_base"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<day_chip
+					label="ÇAR"
+					label_color="#bg_base"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<day_chip
+					label="PER"
+					label_color="#bg_base"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<day_chip
+					label="CUM"
+					label_color="#bg_base"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<day_chip label="CMT" />
+				<day_chip label="PAZ" />
+			</lv_obj>
+		</lv_obj>
+
+		<lv_obj width="100%" height="1">
+			<style name="divider" />
+		</lv_obj>
+
+		<!-- alarm sesi -->
+		<lv_obj
+			name="sound_row"
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_cross_place="center"
+			style_pad_column="14"
+			style_pad_top="2"
+			style_pad_bottom="2"
+		>
+			<style name="plain" />
+			<lv_image src="ui_speaker" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+			<lv_label text="Alarm Sesi" flex_grow="1" style_text_font="mono_17" style_text_color="#text_1" />
+			<lv_label bind_text="alarm_sound" style_text_font="mono_15" style_text_color="#text_2" />
+			<lv_image src="ui_chevron" style_image_recolor="#text_3" style_image_recolor_opa="255" />
+		</lv_obj>
+
+		<lv_button name="save" width="100%" height="44">
+			<style name="btn_primary" />
+			<lv_label
+				text="KAYDET"
+				align="center"
+				style_text_font="mono_15"
+				style_text_color="#bg_base"
+				style_text_letter_space="2"
+			/>
+			<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+		</lv_button>
+	</view>
+</screen>

@@ -1,41 +1,59 @@
 list(
   APPEND
   LV_EDITOR_PROJECT_SOURCES
+  ${CMAKE_CURRENT_LIST_DIR}/components/city_row_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/clock_full_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/day_chip_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/day_slot_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/forecast_row_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/home_main_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/hour_card_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/settings_card_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/stat_gauge_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/time_picker_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/weather_daily_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/weather_hourly_gen.c
-  ${CMAKE_CURRENT_LIST_DIR}/components/wifi_list_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/components/wifi_row_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_18_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_22_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_26_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_44_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_52_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_112_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_142_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/disp_232_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_12_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_13_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_15_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_16_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_17_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_19_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_26_data.c
   ${CMAKE_CURRENT_LIST_DIR}/fonts/mono_34_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_back_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_backspace_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_bell_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_bell_lg_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_check_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_chevdown_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_chevron_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_clock_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_close_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_eye_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_gear_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_lock_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_lock_lg_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_pin_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_pin_lg_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_refresh_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_search_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_shift_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_speaker_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_wifi_1_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_wifi_2_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_wifi_3_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/ui_wifi_conn_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/ui_wifi_plain_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/wx_cloud_34_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/wx_cloud_46_data.c
   ${CMAKE_CURRENT_LIST_DIR}/images/wx_cloud_104_data.c
@@ -53,5 +71,10 @@ list(
   ${CMAKE_CURRENT_LIST_DIR}/images/wx_sun_104_data.c
   ${CMAKE_CURRENT_LIST_DIR}/lvgl_ui_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/lvgl_ui.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/alarm_set_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/location_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/screens/main_screen_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/settings_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/time_date_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/wifi_list_gen.c
   ${CMAKE_CURRENT_LIST_DIR}/screens/wifi_password_gen.c)

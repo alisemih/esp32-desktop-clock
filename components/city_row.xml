@@ -1,0 +1,36 @@
+<!--
+  city_row — konum listesindeki tek sehir satiri.
+  Secili sehir kullanim yerinde row_active stili + check_opa="255" ile isaretlenir.
+-->
+<component>
+	<api>
+		<prop name="city" type="string" default="" />
+		<prop name="region" type="string" default="" />
+		<prop name="accent" type="color" default="0xAEB9C4" />
+		<prop name="check_opa" type="int" default="0" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		width="100%"
+		height="46"
+		flex_flow="row"
+		style_flex_cross_place="center"
+		style_pad_column="14"
+		style_pad_left="10"
+		style_pad_right="10"
+	>
+		<style name="plain" />
+
+		<lv_image name="pin" src="ui_pin" style_image_recolor="$accent" style_image_recolor_opa="255" />
+		<lv_label name="city_name" text="$city" style_text_font="mono_16" style_text_color="#text_1" />
+		<lv_label name="city_region" text="$region" flex_grow="1" style_text_font="mono_16" style_text_color="#text_3" />
+		<lv_image
+			name="check"
+			src="ui_check"
+			style_opa="$check_opa"
+			style_image_recolor="#accent_warm"
+			style_image_recolor_opa="255"
+		/>
+	</view>
+</component>

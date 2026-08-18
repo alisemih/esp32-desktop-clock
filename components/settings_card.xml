@@ -1,0 +1,48 @@
+<!--
+  settings_card — ayarlar merkezindeki kategori karti.
+  Ikon rozeti + baslik + durum satiri + chevron. Tiklama olayi kullanim
+  yerinde verilir, cunku her kart farkli bir ekrana gider.
+-->
+<component>
+	<api>
+		<prop name="icon" type="image" />
+		<prop name="title" type="string" default="" />
+		<prop name="subtitle" type="string" default="" />
+	</api>
+
+	<view
+		extends="lv_obj"
+		width="100%"
+		height="88"
+		flex_flow="row"
+		style_flex_cross_place="center"
+		style_pad_column="18"
+	>
+		<style name="hub_card" />
+
+		<lv_obj
+			width="44"
+			height="44"
+			flex_flow="row"
+			style_flex_main_place="center"
+			style_flex_cross_place="center"
+			style_flex_track_place="center"
+			style_bg_color="#bg_well"
+			style_bg_opa="255"
+			style_radius="12"
+			style_border_color="#hairline"
+			style_border_opa="20"
+			style_border_width="1"
+		>
+			<lv_image name="card_icon" src="$icon" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+		</lv_obj>
+
+		<lv_obj flex_grow="1" height="content" flex_flow="column" style_pad_row="4">
+			<style name="plain" />
+			<lv_label name="card_title" text="$title" style_text_font="mono_19" style_text_color="#text_1" />
+			<lv_label name="card_sub" text="$subtitle" style_text_font="mono_12" style_text_color="#text_3" />
+		</lv_obj>
+
+		<lv_image src="ui_chevron" style_image_recolor="#text_3" style_image_recolor_opa="255" />
+	</view>
+</component>

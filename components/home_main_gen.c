@@ -79,6 +79,23 @@ lv_obj_t * home_main_create(lv_obj_t * parent)
         lv_obj_set_style_text_color(lv_label_0, TEXT_2, 0);
         lv_obj_set_style_text_letter_space(lv_label_0, 3, 0);
 
+        lv_obj_t * btn_settings = lv_obj_create(lv_obj_1);
+        lv_obj_set_name(btn_settings, "btn_settings");
+        lv_obj_set_width(btn_settings, 44);
+        lv_obj_set_height(btn_settings, 44);
+        lv_obj_set_flex_flow(btn_settings, LV_FLEX_FLOW_ROW);
+        lv_obj_set_style_flex_main_place(btn_settings, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_flex_cross_place(btn_settings, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_flex_track_place(btn_settings, LV_FLEX_ALIGN_CENTER, 0);
+        lv_obj_set_style_bg_opa(btn_settings, 0, 0);
+        lv_obj_set_style_border_width(btn_settings, 0, 0);
+        lv_obj_t * lv_image_0 = lv_image_create(btn_settings);
+        lv_image_set_src(lv_image_0, ui_gear);
+        lv_obj_set_style_image_recolor(lv_image_0, TEXT_2, 0);
+        lv_obj_set_style_image_recolor_opa(lv_image_0, 255, 0);
+
+        lv_obj_add_screen_load_event(btn_settings, LV_EVENT_CLICKED, settings, LV_SCREEN_LOAD_ANIM_MOVE_LEFT, 300, 0);
+
         lv_obj_t * lv_obj_4 = lv_obj_create(lv_obj_0);
         lv_obj_set_width(lv_obj_4, lv_pct(100));
         lv_obj_set_height(lv_obj_4, LV_SIZE_CONTENT);
@@ -91,7 +108,7 @@ lv_obj_t * home_main_create(lv_obj_t * parent)
         lv_obj_set_width(clock_block, LV_SIZE_CONTENT);
         lv_obj_set_height(clock_block, LV_SIZE_CONTENT);
         lv_obj_set_flex_flow(clock_block, LV_FLEX_FLOW_COLUMN);
-        lv_obj_set_style_pad_row(clock_block, 0, 0);
+        lv_obj_set_style_pad_row(clock_block, 10, 0);
         lv_obj_add_style(clock_block, &plain, 0);
         lv_obj_t * clock = lv_label_create(clock_block);
         lv_obj_set_name(clock, "clock");

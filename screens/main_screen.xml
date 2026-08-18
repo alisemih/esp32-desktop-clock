@@ -1,19 +1,20 @@
 <!--
-  ANA EKRAN — kaydirmali sayfalayici (3 sutun)
+  ANA EKRAN — kaydirmali sayfalayici (2 sutun)
 
-  Bes sayfa tek ekranda. Gezinme dokunma ile degil, parmakla kaydirarak olur:
+  Dort sayfa tek ekranda. Gezinme dokunma ile degil, parmakla kaydirarak olur:
   kabin icerigi kendisinden buyuk oldugu icin LVGL onu kaydirilabilir yapar,
   snap da birakinca en yakin sayfaya oturtur.
 
-      sutun 0          sutun 1            sutun 2
-    ┌──────────────┬──────────────────┬──────────────────┐
-    │ home_main    │ weather_hourly   │ wifi_list        │  satir 0
-    ├──────────────┼──────────────────┼──────────────────┘
-    │ clock_full   │ weather_daily    │                     satir 1
+      sutun 0          sutun 1
+    ┌──────────────┬──────────────────┐
+    │ home_main    │ weather_hourly   │  satir 0
+    ├──────────────┼──────────────────┤
+    │ clock_full   │ weather_daily    │  satir 1
     └──────────────┴──────────────────┘
 
-  Dis kap yatayda 3 sutun arasinda, ilk iki sutun dikeyde 2 sayfa arasinda
-  snap yapar. Wi-Fi'ye weather_hourly'den sola kaydirarak gidilir.
+  Dis kap yatayda 2 sutun arasinda, her sutun dikeyde 2 sayfa arasinda
+  snap yapar. Ayarlar ve alarm sayfalayicida degil: ana ekranin sag
+  ustundeki cark ve saat ekranindaki can ikonlarindan acilan ekranlardir.
 
   wifi_password BURADA DEGIL: kaydirmayla degil, listedeki secili aga
   tiklayarak acilmasi istendigi icin ayri bir ekran oldu
@@ -76,19 +77,5 @@
 			<weather_daily />
 		</lv_obj>
 
-		<!-- sutun 2 — Wi-Fi kurulumu -->
-		<lv_obj
-			name="col_wifi"
-			width="800"
-			height="480"
-			flex_flow="column"
-			scroll_snap_y="center"
-			scroll_one="true"
-			scroll_elastic="false"
-			scrollbar_mode="off"
-		>
-			<style name="page_col" />
-			<wifi_list />
-		</lv_obj>
 	</view>
 </screen>

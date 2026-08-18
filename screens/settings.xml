@@ -1,0 +1,83 @@
+<!--
+  10 · AYARLAR — ana ekranin sag ustundeki cark ikonundan acilir.
+
+  Ust soldaki GERİ ana ekrana dondurur; her kart kendi ayar ekranini acar. Tiklama olayi kartin
+  kendisinde degil burada verilir, cunku her kart farkli bir hedefe gider.
+-->
+<screen name="settings" permanent="true">
+	<view
+		flex_flow="column"
+		style_pad_top="32"
+		style_pad_bottom="26"
+		style_pad_left="44"
+		style_pad_right="44"
+		style_pad_row="14"
+	>
+		<style name="screen_root" />
+
+		<!-- ust bar -->
+		<lv_obj
+			width="100%"
+			height="content"
+			flex_flow="row"
+			style_flex_main_place="space_between"
+			style_flex_cross_place="center"
+		>
+			<style name="plain" />
+			<lv_obj
+				name="back"
+				width="content"
+				height="content"
+				flex_flow="row"
+				style_flex_cross_place="center"
+				style_pad_column="8"
+			>
+				<style name="plain" />
+				<lv_image src="ui_back" style_image_recolor="#text_2" style_image_recolor_opa="255" />
+				<lv_label text="GERİ" style_text_font="mono_13" style_text_color="#text_2" style_text_letter_space="2" />
+				<screen_load_event screen="main_screen" trigger="clicked" anim_type="move_bottom" duration="300" />
+			</lv_obj>
+			<lv_label text="SÜRÜM 1.4.2" style_text_font="mono_13" style_text_color="#text_3" style_text_letter_space="2" />
+		</lv_obj>
+
+		<!-- baslik -->
+		<lv_obj width="content" height="content" flex_flow="column" style_pad_row="6">
+			<style name="plain" />
+			<lv_label text="Ayarlar" style_text_font="disp_44" style_text_color="#text_1" />
+			<lv_obj width="content" height="content" flex_flow="row" style_flex_cross_place="center" style_pad_column="9">
+				<style name="plain" />
+				<lv_obj
+					width="6"
+					height="6"
+					style_radius="3"
+					style_bg_color="#accent_warm"
+					style_bg_opa="255"
+					style_border_width="0"
+				/>
+				<lv_label
+					text="3 KATEGORİ · SİSTEM AYARLARI"
+					style_text_font="mono_13"
+					style_text_color="#text_3"
+					style_text_letter_space="2"
+				/>
+			</lv_obj>
+		</lv_obj>
+
+		<!-- kategoriler -->
+		<lv_obj width="100%" flex_grow="1" flex_flow="column" style_pad_row="14">
+			<style name="plain" />
+
+			<settings_card name="card_wifi" icon="ui_wifi_plain" title="Wi-Fi" subtitle="Yılmaz_Ev ağına bağlı">
+				<screen_load_event screen="wifi_list" trigger="clicked" anim_type="move_left" duration="300" />
+			</settings_card>
+
+			<settings_card name="card_time" icon="ui_clock" title="Saat ve Tarih" subtitle="09:42 · 17 Ağustos 2026">
+				<screen_load_event screen="time_date" trigger="clicked" anim_type="move_left" duration="300" />
+			</settings_card>
+
+			<settings_card name="card_loc" icon="ui_pin_lg" title="Konum" subtitle="İstanbul, Marmara Bölgesi">
+				<screen_load_event screen="location" trigger="clicked" anim_type="move_left" duration="300" />
+			</settings_card>
+		</lv_obj>
+	</view>
+</screen>
